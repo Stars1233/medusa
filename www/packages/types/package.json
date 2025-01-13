@@ -32,11 +32,11 @@
     "watch": "tsc --watch"
   },
   "devDependencies": {
+    "@medusajs/icons": "^2.0.0",
     "@types/node": "^20.11.20",
     "rimraf": "^5.0.5",
     "tsconfig": "*",
-    "typescript": "^5.3.3",
-    "@medusajs/icons": "^2.0.0"
+    "typescript": "^5.3.3"
   },
   "engines": {
     "node": ">=18.17.0"

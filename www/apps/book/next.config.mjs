@@ -167,12 +167,12 @@ const nextConfig = {
     }
   },
   redirects,
-  experimental: {
-    outputFileTracingExcludes: {
-      "*": ["node_modules/@medusajs/icons"],
-    },
+  outputFileTracingExcludes: {
+    "*": ["node_modules/@medusajs/icons"],
   },
-  optimizePackageImports: ["@medusajs/icons", "@medusajs/ui"],
+  experimental: {
+    optimizePackageImports: ["@medusajs/icons", "@medusajs/ui"],
+  },
 }
 
 export default withMDX(nextConfig)

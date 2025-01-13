@@ -14,7 +14,8 @@
     },
     "prep": {
       "dependsOn": [
-        "^tags#build"
+        "^tags#build",
+        "^build-scripts#build"
       ]
     },
     "start:monorepo": {

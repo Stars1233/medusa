@@ -15374,6 +15374,50 @@ paths:
           $ref: '#/components/responses/invalid_request_error'
         '500':
           $ref: '#/components/responses/500_error'
+  /admin/fulfillment-providers/{id}/options:
+    get:
+      operationId: GetFulfillmentProvidersIdOptions
+      summary: List Fulfillment Options
+      description: Retrieve the list of fulfillment options of a fulfillment provider. These options may be retrieved from an integrated third-party service.
+      x-authenticated: true
+      parameters:
+        - name: id
+          in: path
+          description: The fulfillment provider's ID.
+          required: true
+          schema:
+            type: string
+      security:
+        - api_token: []
+        - cookie_auth: []
+        - jwt_token: []
+      x-codeSamples:
+        - lang: Shell
+          label: cURL
+          source: |-
+            curl '{backend_url}/admin/fulfillment-providers/{id}/options' \
+            -H 'Authorization: Bearer {access_token}'
+      tags:
+        - Fulfillment Providers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdminFulfillmentProviderOptionsListResponse'
+        '400':
+          $ref: '#/components/responses/400_error'
+        '401':
+          $ref: '#/components/responses/unauthorized'
+        '404':
+          $ref: '#/components/responses/not_found_error'
+        '409':
+          $ref: '#/components/responses/invalid_state_error'
+        '422':
+          $ref: '#/components/responses/invalid_request_error'
+        '500':
+          $ref: '#/components/responses/500_error'
   /admin/fulfillment-sets/{id}:
     delete:
       operationId: DeleteFulfillmentSetsId
@@ -43285,7 +43329,10 @@ paths:
             schema:
               type: object
               title: input
-              description: The input data necessary for authentication. For example, for email-pass authentication, pass `email` and `password` properties.
+              description: |
+                The input data necessary for authentication. 
+                For example, for email-pass authentication, pass `email` and `password` properties. 
+                For the Google and GitHub authentication providers, you can pass `callback_url` to indicate the URL in the frontend that the user should be redirected to after completing their authentication. This will override the provider's `callbackUrl` configurations in `medusa-config.ts`.
       x-codeSamples:
         - lang: Shell
           label: EmailPass Provider
@@ -43327,9 +43374,7 @@ paths:
       operationId: PostActor_typeAuth_providerCallback
       summary: Validate Authentication Callback
       description: |
-        This API route is used by your dashboard or frontend application when a third-party provider redirects to it after authentication. 
-
-        It validates the authentication with the third-party provider and, if successful, returns an authentication token.
+        This API route is used by your dashboard or frontend application when a third-party provider redirects to it after authentication. It validates the authentication with the third-party provider and, if successful, returns an authentication token. All query parameters received from the third-party provider, such as `code`, `state`, and `error`, must be passed as query parameters to this route.
 
         You can decode the JWT token using libraries like [react-jwt](https://www.npmjs.com/package/react-jwt) in the frontend. If the decoded data doesn't  have an `actor_id` property, then you must create a user, typically using the Accept Invite route passing the token in the request's Authorization header.
       externalDocs:
@@ -47310,6 +47355,49 @@ components:
           description: The list of fulfillment providers.
           items:
             $ref: '#/components/schemas/AdminFulfillmentProvider'
+    AdminFulfillmentProviderOption:
+      type: object
+      description: The fulfillment option's details.
+      x-schemaName: AdminFulfillmentProviderOption
+      required:
+        - id
+        - is_return
+      properties:
+        id:
+          type: string
+          title: id
+          description: The fulfillment option's ID.
+        is_return:
+          type: boolean
+          title: is_return
+          description: Whether the fulfillment option is used for returns.
+    AdminFulfillmentProviderOptionsListResponse:
+      type: object
+      description: The paginated list of fulfillment options.
+      x-schemaName: AdminFulfillmentProviderOptionsListResponse
+      required:
+        - limit
+        - offset
+        - count
+        - fulfillment_options
+      properties:
+        limit:
+          type: number
+          title: limit
+          description: The maximum number of items returned.
+        offset:
+          type: number
+          title: offset
+          description: The number of items skipped before retrieving the returned items.
+        count:
+          type: number
+          title: count
+          description: The total number of items.
+        fulfillment_options:
+          type: array
+          description: The list of fulfillment options.
+          items:
+            $ref: '#/components/schemas/AdminFulfillmentProviderOption'
     AdminFulfillmentResponse:
       type: object
       description: A fulfillment's details.
@@ -47822,6 +47910,7 @@ components:
         - payment_collections
         - items
         - shipping_methods
+        - status
         - currency_code
         - id
         - version
@@ -48052,6 +48141,10 @@ components:
           type: number
           title: original_shipping_tax_total
           description: The tax total of the order's shipping excluding promotions.
+        status:
+          type: string
+          title: status
+          description: The order's status.
     AdminOrderAddress:
       type: object
       description: An order address.
@@ -48743,6 +48836,7 @@ components:
       required:
         - return_requested_total
         - order_change
+        - status
         - currency_code
         - id
         - version
@@ -49354,6 +49448,10 @@ components:
           $ref: '#/components/schemas/AdminCustomer'
         sales_channel:
           $ref: '#/components/schemas/AdminSalesChannel'
+        status:
+          type: string
+          title: status
+          description: The order's status.
     AdminOrderPreviewResponse:
       type: object
       description: The preview of an order.
@@ -52959,8 +53057,13 @@ components:
           title: id
           description: The price rule's ID.
         value:
-          type: string
-          title: value
+          oneOf:
+            - type: string
+              title: value
+              description: The price rule's value.
+            - type: number
+              title: value
+              description: The price rule's value.
           description: The price rule's value.
         operator:
           type: string
@@ -53039,18 +53142,8 @@ components:
           description: The shipping option rule's operator.
           example: eq
         value:
-          oneOf:
-            - type: string
-              title: value
-              description: The rule's value.
-              example: '"true"'
-            - type: array
-              description: The rule's values.
-              items:
-                type: string
-                title: value
-                description: A rule's value
-                example: '"true"'
+          type: string
+          title: value
         shipping_option_id:
           type: string
           title: shipping_option_id
@@ -55845,6 +55938,7 @@ components:
         - sales_channel_id
         - email
         - currency_code
+        - status
         - items
         - shipping_methods
         - payment_status
@@ -56066,6 +56160,10 @@ components:
           type: number
           title: original_shipping_tax_total
           description: The tax total of the order's shipping excluding promotions.
+        status:
+          type: string
+          title: status
+          description: The order's status.
     BaseOrderAddress:
       type: object
       description: An order address.
@@ -58909,6 +59007,11 @@ components:
           type: number
           title: display_id
           description: The order's display ID.
+        credit_lines:
+          type: array
+          description: The order's credit lines, useful to add additional payment amounts for an order.
+          items:
+            $ref: '#/components/schemas/OrderCreditLine'
     OrderAddress:
       type: object
       description: The address's details.
@@ -59334,6 +59437,51 @@ components:
           title: canceled_at
           description: The date the claim was canceled.
           format: date-time
+    OrderCreditLine:
+      type: object
+      description: The credit line's details.
+      x-schemaName: OrderCreditLine
+      required:
+        - id
+        - order_id
+        - order
+        - reference
+        - reference_id
+        - metadata
+        - created_at
+        - updated_at
+      properties:
+        id:
+          type: string
+          title: id
+          description: The credit line's ID.
+        order_id:
+          type: string
+          title: order_id
+          description: The ID of the associated order.
+        order:
+          type: object
+        reference:
+          type: string
+          title: reference
+          description: The table that this credit line references. For example, `payment_collection`.
+        reference_id:
+          type: string
+          title: reference_id
+          description: The ID of the record in the referenced table. For example, `paycol_123`.
+        metadata:
+          type: object
+          description: The credit line's metadata, can hold custom key-value pairs.
+        created_at:
+          type: string
+          format: date-time
+          title: created_at
+          description: The date the credit line was created.
+        updated_at:
+          type: string
+          format: date-time
+          title: updated_at
+          description: The date the credit line was updated.
     OrderExchange:
       type: object
       description: The order change's exchange.
@@ -61976,6 +62124,7 @@ components:
       required:
         - items
         - shipping_methods
+        - status
         - currency_code
         - id
         - region_id
@@ -62200,6 +62349,10 @@ components:
           description: The order's transactions.
           items:
             $ref: '#/components/schemas/BaseOrderTransaction'
+        status:
+          type: string
+          title: status
+          description: The order's status.
     StoreOrderAddress:
       type: object
       description: An order address
@@ -69620,10 +69773,9 @@ components:
         type: unknown_error
   securitySchemes:
     api_token:
-      type: apiKey
+      type: http
       x-displayName: API Token
-      in: header
-      name: x-medusa-access-token
+      scheme: bearer
     jwt_token:
       type: http
       x-displayName: JWT Token

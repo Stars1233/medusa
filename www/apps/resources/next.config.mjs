@@ -1,4 +1,3 @@
-import mdx from "@next/mdx"
 import {
   brokenLinkCheckerPlugin,
   localLinksRehypePlugin,
@@ -6,7 +5,9 @@ import {
   typeListLinkFixerPlugin,
   workflowDiagramLinkFixerPlugin,
 } from "remark-rehype-plugins"
+
 import bundleAnalyzer from "@next/bundle-analyzer"
+import mdx from "@next/mdx"
 import mdxPluginOptions from "./mdx-options.mjs"
 import path from "node:path"
 
@@ -126,12 +127,12 @@ const nextConfig = {
       },
     ]
   },
-  experimental: {
-    outputFileTracingExcludes: {
-      "*": ["node_modules/@medusajs/icons"],
-    },
+  outputFileTracingExcludes: {
+    "*": ["node_modules/@medusajs/icons"],
   },
-  optimizePackageImports: ["@medusajs/icons", "@medusajs/ui"],
+  experimental: {
+    optimizePackageImports: ["@medusajs/icons", "@medusajs/ui"],
+  },
 }
 
 const withBundleAnalyzer = bundleAnalyzer({

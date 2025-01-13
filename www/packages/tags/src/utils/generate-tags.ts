@@ -6,25 +6,51 @@ import { findPageTitle, getFrontMatterSync } from "docs-utils"
 
 type ConfigItem = {
   path: string
-  contentPaths: string[]
+  contentPaths: {
+    path: string
+    omitFromPath?: boolean
+  }[]
 }
 
 const config: ConfigItem[] = [
   {
     path: path.resolve("..", "..", "apps", "book"),
-    contentPaths: ["app"],
+    contentPaths: [
+      {
+        path: "app",
+        omitFromPath: true,
+      },
+    ],
   },
   {
     path: path.resolve("..", "..", "apps", "resources"),
-    contentPaths: ["app", "references"],
+    contentPaths: [
+      {
+        path: "app",
+        omitFromPath: true,
+      },
+      {
+        path: "references",
+      },
+    ],
   },
   {
     path: path.resolve("..", "..", "apps", "ui"),
-    contentPaths: [path.join("src", "content", "docs")],
+    contentPaths: [
+      {
+        path: path.join("src", "content", "docs"),
+        omitFromPath: true,
+      },
+    ],
   },
   {
     path: path.resolve("..", "..", "apps", "user-guide"),
-    contentPaths: ["app"],
+    contentPaths: [
+      {
+        path: "app",
+        omitFromPath: true,
+      },
+    ],
   },
 ]
 
@@ -47,20 +73,21 @@ export async function generateTags(basePath?: string) {
   basePath = basePath || path.resolve()
   const tags: Tags = {}
   async function getTags(item: ConfigItem) {
-    async function scanDirectory(dirPath: string) {
-      const files = await readdir(dirPath)
+    async function scanDirectory(currentDirPath: string, omitPath?: string) {
+      const files = await readdir(currentDirPath)
 
       for (const file of files) {
-        const fullPath = path.join(dirPath, file)
+        const fullPath = path.join(currentDirPath, file)
         if (!file.endsWith(".mdx") || file.startsWith("_")) {
           if (statSync(fullPath).isDirectory()) {
-            await scanDirectory(fullPath)
+            await scanDirectory(fullPath, omitPath)
           }
           continue
         }
 
         const frontmatter = getFrontMatterSync(fullPath)
         const fileBasename = path.basename(file)
+        const itemBasePath = path.join(item.path, omitPath || "")
 
         frontmatter.tags?.forEach((tag) => {
           if (!Object.hasOwn(tags, tag)) {
@@ -73,16 +100,21 @@ export async function generateTags(basePath?: string) {
             ),
             path:
               frontmatter.slug ||
-              fullPath.replace(item.path, "").replace(`/${fileBasename}`, ""),
+              fullPath
+                .replace(itemBasePath, "")
+                .replace(`/${fileBasename}`, ""),
           })
         })
       }
     }
 
     for (const contentPath of item.contentPaths) {
-      const basePath = path.join(item.path, contentPath)
+      const basePath = path.join(item.path, contentPath.path)
 
-      await scanDirectory(basePath)
+      await scanDirectory(
+        basePath,
+        !contentPath.omitFromPath ? "" : contentPath.path
+      )
     }
   }
 
