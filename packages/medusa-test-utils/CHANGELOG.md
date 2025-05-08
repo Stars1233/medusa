@@ -1,5 +1,13 @@
 # Change Log
 
+## 2.7.2
+
+### Patch Changes
+
+- Updated dependencies [[`469ecef3c52797b812c9cb8a4410f632e8de8b8c`](https://github.com/medusajs/medusa/commit/469ecef3c52797b812c9cb8a4410f632e8de8b8c), [`aba4cba373aa6499ca7cce77e7515613c38c681d`](https://github.com/medusajs/medusa/commit/aba4cba373aa6499ca7cce77e7515613c38c681d), [`2dd885ebc12303b9b1741a2785560da44d4e4e28`](https://github.com/medusajs/medusa/commit/2dd885ebc12303b9b1741a2785560da44d4e4e28), [`cb53b8a5290708b395e1cf1f1a75ec6ff518f7b7`](https://github.com/medusajs/medusa/commit/cb53b8a5290708b395e1cf1f1a75ec6ff518f7b7), [`9cedeb182dc19d6127b602fc06e4b8850490e2a9`](https://github.com/medusajs/medusa/commit/9cedeb182dc19d6127b602fc06e4b8850490e2a9), [`b868a4ef4deb7df09d6156a907f4c883cd55a3fd`](https://github.com/medusajs/medusa/commit/b868a4ef4deb7df09d6156a907f4c883cd55a3fd)]:
+  - @medusajs/medusa@2.7.2
+  - @medusajs/framework@2.7.2
+
 ## 2.7.1
 
 ### Patch Changes

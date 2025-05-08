@@ -1,5 +1,65 @@
 # Change Log
 
+## 2.7.2
+
+### Patch Changes
+
+- [#12353](https://github.com/medusajs/medusa/pull/12353) [`469ecef3c52797b812c9cb8a4410f632e8de8b8c`](https://github.com/medusajs/medusa/commit/469ecef3c52797b812c9cb8a4410f632e8de8b8c) Thanks [@olivermrbl](https://github.com/olivermrbl)! - chore: Minor revamp of cart completion
+
+- [#12345](https://github.com/medusajs/medusa/pull/12345) [`aba4cba373aa6499ca7cce77e7515613c38c681d`](https://github.com/medusajs/medusa/commit/aba4cba373aa6499ca7cce77e7515613c38c681d) Thanks [@olivermrbl](https://github.com/olivermrbl)! - fix(medusa): Support additional data on admin/collections
+
+- [#12393](https://github.com/medusajs/medusa/pull/12393) [`2dd885ebc12303b9b1741a2785560da44d4e4e28`](https://github.com/medusajs/medusa/commit/2dd885ebc12303b9b1741a2785560da44d4e4e28) Thanks [@fPolic](https://github.com/fPolic)! - fix(medusa): check if tax module is installed when running tax migration script
+
+- [#12266](https://github.com/medusajs/medusa/pull/12266) [`cb53b8a5290708b395e1cf1f1a75ec6ff518f7b7`](https://github.com/medusajs/medusa/commit/cb53b8a5290708b395e1cf1f1a75ec6ff518f7b7) Thanks [@thetutlage](https://github.com/thetutlage)! - feat: upgrade opentelemetry packages to support the latest release
+
+- [#12297](https://github.com/medusajs/medusa/pull/12297) [`9cedeb182dc19d6127b602fc06e4b8850490e2a9`](https://github.com/medusajs/medusa/commit/9cedeb182dc19d6127b602fc06e4b8850490e2a9) Thanks [@fPolic](https://github.com/fPolic)! - feat(dashboard, js-sdk, medusa, tax, types): custom tax providers
+
+- Updated dependencies [[`469ecef3c52797b812c9cb8a4410f632e8de8b8c`](https://github.com/medusajs/medusa/commit/469ecef3c52797b812c9cb8a4410f632e8de8b8c), [`0d8af119c5f000addcbc2431c61711b51e7b34b1`](https://github.com/medusajs/medusa/commit/0d8af119c5f000addcbc2431c61711b51e7b34b1), [`77c3023200f5c718a77220f39b300e9149a92a4f`](https://github.com/medusajs/medusa/commit/77c3023200f5c718a77220f39b300e9149a92a4f), [`a53d645f8aab30135baebac29f9645dd35d47632`](https://github.com/medusajs/medusa/commit/a53d645f8aab30135baebac29f9645dd35d47632), [`90c61d189806894c56bfd5686807406c800cfdeb`](https://github.com/medusajs/medusa/commit/90c61d189806894c56bfd5686807406c800cfdeb), [`c4dd805849fee483d52ee61078e15f9be111b414`](https://github.com/medusajs/medusa/commit/c4dd805849fee483d52ee61078e15f9be111b414), [`89859987565b1fc872c7cd1c6d23144b97f454bc`](https://github.com/medusajs/medusa/commit/89859987565b1fc872c7cd1c6d23144b97f454bc), [`9cedeb182dc19d6127b602fc06e4b8850490e2a9`](https://github.com/medusajs/medusa/commit/9cedeb182dc19d6127b602fc06e4b8850490e2a9), [`e4d853185f103ffc81fcf14df02e84cd5c538f9a`](https://github.com/medusajs/medusa/commit/e4d853185f103ffc81fcf14df02e84cd5c538f9a), [`d7a273ff2def96420054f31114a46294be6ee968`](https://github.com/medusajs/medusa/commit/d7a273ff2def96420054f31114a46294be6ee968), [`b868a4ef4deb7df09d6156a907f4c883cd55a3fd`](https://github.com/medusajs/medusa/commit/b868a4ef4deb7df09d6156a907f4c883cd55a3fd), [`80007f3afda76eabd5b148fa6bb5590fa6987265`](https://github.com/medusajs/medusa/commit/80007f3afda76eabd5b148fa6bb5590fa6987265)]:
+  - @medusajs/core-flows@2.7.2
+  - @medusajs/product@2.7.2
+  - @medusajs/tax@2.7.2
+  - @medusajs/index@2.7.2
+  - @medusajs/framework@2.7.2
+  - @medusajs/link-modules@2.7.2
+  - @medusajs/pricing@2.7.2
+  - @medusajs/workflow-engine-inmemory@2.7.2
+  - @medusajs/workflow-engine-redis@2.7.2
+  - @medusajs/admin-bundler@2.7.2
+  - @medusajs/api-key@2.7.2
+  - @medusajs/auth@2.7.2
+  - @medusajs/cache-inmemory@2.7.2
+  - @medusajs/cache-redis@2.7.2
+  - @medusajs/cart@2.7.2
+  - @medusajs/currency@2.7.2
+  - @medusajs/customer@2.7.2
+  - @medusajs/event-bus-local@2.7.2
+  - @medusajs/event-bus-redis@2.7.2
+  - @medusajs/file@2.7.2
+  - @medusajs/fulfillment@2.7.2
+  - @medusajs/inventory@2.7.2
+  - @medusajs/locking@2.7.2
+  - @medusajs/notification@2.7.2
+  - @medusajs/order@2.7.2
+  - @medusajs/payment@2.7.2
+  - @medusajs/promotion@2.7.2
+  - @medusajs/auth-emailpass@2.7.2
+  - @medusajs/auth-github@2.7.2
+  - @medusajs/auth-google@2.7.2
+  - @medusajs/file-local@2.7.2
+  - @medusajs/file-s3@2.7.2
+  - @medusajs/fulfillment-manual@2.7.2
+  - @medusajs/locking-postgres@2.7.2
+  - @medusajs/locking-redis@2.7.2
+  - @medusajs/notification-local@2.7.2
+  - @medusajs/notification-sendgrid@2.7.2
+  - @medusajs/payment-stripe@2.7.2
+  - @medusajs/region@2.7.2
+  - @medusajs/sales-channel@2.7.2
+  - @medusajs/stock-location@2.7.2
+  - @medusajs/store@2.7.2
+  - @medusajs/user@2.7.2
+  - @medusajs/telemetry@2.7.2
+
 ## 2.7.1
 
 ### Patch Changes
