@@ -1,5 +1,21 @@
 # @medusajs/dashboard
 
+## 2.7.2
+
+### Patch Changes
+
+- [#12297](https://github.com/medusajs/medusa/pull/12297) [`9cedeb182dc19d6127b602fc06e4b8850490e2a9`](https://github.com/medusajs/medusa/commit/9cedeb182dc19d6127b602fc06e4b8850490e2a9) Thanks [@fPolic](https://github.com/fPolic)! - feat(dashboard, js-sdk, medusa, tax, types): custom tax providers
+
+- [#12346](https://github.com/medusajs/medusa/pull/12346) [`cdb135e491b44c7573e7c568565366517576b90a`](https://github.com/medusajs/medusa/commit/cdb135e491b44c7573e7c568565366517576b90a) Thanks [@pepijn-vanvlaanderen](https://github.com/pepijn-vanvlaanderen)! - Added missing dependencies
+
+- [#11877](https://github.com/medusajs/medusa/pull/11877) [`353906614625ce8cc15c7d60537db697a69e160d`](https://github.com/medusajs/medusa/commit/353906614625ce8cc15c7d60537db697a69e160d) Thanks [@AmbroziuBaban](https://github.com/AmbroziuBaban)! - fix(dashboard): Admin Global Search broken for variants
+
+- Updated dependencies [[`9cedeb182dc19d6127b602fc06e4b8850490e2a9`](https://github.com/medusajs/medusa/commit/9cedeb182dc19d6127b602fc06e4b8850490e2a9), [`4f6362b1cb1b84f01cc4cd277981aae7ae5797c9`](https://github.com/medusajs/medusa/commit/4f6362b1cb1b84f01cc4cd277981aae7ae5797c9)]:
+  - @medusajs/js-sdk@2.7.2
+  - @medusajs/ui@4.0.10
+  - @medusajs/admin-shared@2.7.2
+  - @medusajs/icons@2.7.2
+
 ## 2.7.1
 
 ### Patch Changes

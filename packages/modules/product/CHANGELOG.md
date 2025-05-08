@@ -1,5 +1,18 @@
 # @medusajs/product
 
+## 2.7.2
+
+### Patch Changes
+
+- [#12391](https://github.com/medusajs/medusa/pull/12391) [`0d8af119c5f000addcbc2431c61711b51e7b34b1`](https://github.com/medusajs/medusa/commit/0d8af119c5f000addcbc2431c61711b51e7b34b1) Thanks [@fPolic](https://github.com/fPolic)! - feat(product): allow variant search by product properties
+
+- [#12354](https://github.com/medusajs/medusa/pull/12354) [`77c3023200f5c718a77220f39b300e9149a92a4f`](https://github.com/medusajs/medusa/commit/77c3023200f5c718a77220f39b300e9149a92a4f) Thanks [@olivermrbl](https://github.com/olivermrbl)! - fix(product): Return updated collections
+
+- [#12357](https://github.com/medusajs/medusa/pull/12357) [`e4d853185f103ffc81fcf14df02e84cd5c538f9a`](https://github.com/medusajs/medusa/commit/e4d853185f103ffc81fcf14df02e84cd5c538f9a) Thanks [@thetutlage](https://github.com/thetutlage)! - fix: export ProductImage to allow for custom links to add alt text
+
+- Updated dependencies [[`b868a4ef4deb7df09d6156a907f4c883cd55a3fd`](https://github.com/medusajs/medusa/commit/b868a4ef4deb7df09d6156a907f4c883cd55a3fd)]:
+  - @medusajs/framework@2.7.2
+
 ## 2.7.1
 
 ### Patch Changes

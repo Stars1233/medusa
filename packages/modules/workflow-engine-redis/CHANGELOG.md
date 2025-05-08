@@ -1,5 +1,14 @@
 # @medusajs/workflow-engine-redis
 
+## 2.7.2
+
+### Patch Changes
+
+- [#12362](https://github.com/medusajs/medusa/pull/12362) [`80007f3afda76eabd5b148fa6bb5590fa6987265`](https://github.com/medusajs/medusa/commit/80007f3afda76eabd5b148fa6bb5590fa6987265) Thanks [@adrien2p](https://github.com/adrien2p)! - feat(workflows-\*): Allow to re run non idempotent but stored workflow with the same transaction id if considered done
+
+- Updated dependencies [[`b868a4ef4deb7df09d6156a907f4c883cd55a3fd`](https://github.com/medusajs/medusa/commit/b868a4ef4deb7df09d6156a907f4c883cd55a3fd)]:
+  - @medusajs/framework@2.7.2
+
 ## 2.7.1
 
 ### Patch Changes

@@ -1,5 +1,17 @@
 # @medusajs/workflows-sdk
 
+## 2.7.2
+
+### Patch Changes
+
+- [#12362](https://github.com/medusajs/medusa/pull/12362) [`80007f3afda76eabd5b148fa6bb5590fa6987265`](https://github.com/medusajs/medusa/commit/80007f3afda76eabd5b148fa6bb5590fa6987265) Thanks [@adrien2p](https://github.com/adrien2p)! - feat(workflows-\*): Allow to re run non idempotent but stored workflow with the same transaction id if considered done
+
+- Updated dependencies [[`a53d645f8aab30135baebac29f9645dd35d47632`](https://github.com/medusajs/medusa/commit/a53d645f8aab30135baebac29f9645dd35d47632), [`89859987565b1fc872c7cd1c6d23144b97f454bc`](https://github.com/medusajs/medusa/commit/89859987565b1fc872c7cd1c6d23144b97f454bc), [`9cedeb182dc19d6127b602fc06e4b8850490e2a9`](https://github.com/medusajs/medusa/commit/9cedeb182dc19d6127b602fc06e4b8850490e2a9), [`b868a4ef4deb7df09d6156a907f4c883cd55a3fd`](https://github.com/medusajs/medusa/commit/b868a4ef4deb7df09d6156a907f4c883cd55a3fd), [`80007f3afda76eabd5b148fa6bb5590fa6987265`](https://github.com/medusajs/medusa/commit/80007f3afda76eabd5b148fa6bb5590fa6987265)]:
+  - @medusajs/utils@2.7.2
+  - @medusajs/types@2.7.2
+  - @medusajs/modules-sdk@2.7.2
+  - @medusajs/orchestration@2.7.2
+
 ## 2.7.1
 
 ### Patch Changes

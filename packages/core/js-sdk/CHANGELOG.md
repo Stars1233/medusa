@@ -1,5 +1,14 @@
 # @medusajs/js-sdk
 
+## 2.7.2
+
+### Patch Changes
+
+- [#12297](https://github.com/medusajs/medusa/pull/12297) [`9cedeb182dc19d6127b602fc06e4b8850490e2a9`](https://github.com/medusajs/medusa/commit/9cedeb182dc19d6127b602fc06e4b8850490e2a9) Thanks [@fPolic](https://github.com/fPolic)! - feat(dashboard, js-sdk, medusa, tax, types): custom tax providers
+
+- Updated dependencies [[`9cedeb182dc19d6127b602fc06e4b8850490e2a9`](https://github.com/medusajs/medusa/commit/9cedeb182dc19d6127b602fc06e4b8850490e2a9), [`b868a4ef4deb7df09d6156a907f4c883cd55a3fd`](https://github.com/medusajs/medusa/commit/b868a4ef4deb7df09d6156a907f4c883cd55a3fd)]:
+  - @medusajs/types@2.7.2
+
 ## 2.7.1
 
 ### Patch Changes
