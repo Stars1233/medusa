@@ -11,9 +11,9 @@ This method emits one or more events. Subscribers listening to the event(s) are 
 #### Example
 
 ```ts
-await eventModuleService.emit({ 
-  name: "user.created", 
-  data: { 
+await eventModuleService.emit({
+  name: "user.created",
+  data: {
     user_id: "user_123"
   }
 })
@@ -103,7 +103,7 @@ await eventModuleService.clearGroupedEvents("group_123")
 
 #### Parameters
 
-<TypeList types={[{"name":"eventGroupId","type":"`string`","description":"The ID of the event group.","optional":false,"defaultValue":"","expandable":false,"children":[]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="clearGroupedEvents"/>
+<TypeList types={[{"name":"eventGroupId","type":"`string`","description":"The ID of the event group.","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"options","type":"`object`","description":"Additional options for the event.","optional":true,"defaultValue":"","expandable":false,"children":[{"name":"eventNames","type":"`string`[]","description":"The names of the events to clear. If not provided, The group will\nbe entirely cleared.","optional":true,"defaultValue":"","expandable":false,"children":[]}]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="clearGroupedEvents"/>
 
 #### Returns
 

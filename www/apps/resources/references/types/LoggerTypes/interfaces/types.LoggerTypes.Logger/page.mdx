@@ -2,6 +2,112 @@ import { TypeList } from "docs-ui"
 
 # Logger
 
-## Properties
+## Methods
 
-<TypeList types={[{"name":"panic","type":"(`data`: `any`) => `void`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"shouldLog","type":"(`level`: `string`) => `boolean`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"setLogLevel","type":"(`level`: `string`) => `void`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"unsetLogLevel","type":"() => `void`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"activity","type":"(`message`: `string`, `config?`: `Record<string, any>`) => `string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"progress","type":"(`activityId`: `string`, `message`: `string`) => `void`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"error","type":"(`messageOrError`: `string` \\| `Error`, `error?`: `Error`) => `void`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"failure","type":"(`activityId`: `string`, `message`: `string`) => `null` \\| `Record<string, any>`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"success","type":"(`activityId`: `string`, `message`: `string`) => `null` \\| `Record<string, any>`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"debug","type":"(`message`: `string`) => `void`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"info","type":"(`message`: `string`) => `void`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"warn","type":"(`message`: `string`) => `void`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"log","type":"(...`args`: `any`[]) => `void`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="Logger"/>
+### panic
+
+#### Parameters
+
+<TypeList types={[{"name":"data","type":"`unknown`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="panic"/>
+
+### shouldLog
+
+#### Parameters
+
+<TypeList types={[{"name":"level","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="shouldLog"/>
+
+#### Returns
+
+<TypeList types={[{"name":"boolean","type":"`boolean`","optional":false,"defaultValue":"","description":"","expandable":false,"children":[]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="shouldLog"/>
+
+### setLogLevel
+
+#### Parameters
+
+<TypeList types={[{"name":"level","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="setLogLevel"/>
+
+### unsetLogLevel
+
+### activity
+
+#### Parameters
+
+<TypeList types={[{"name":"message","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"config","type":"`unknown`","description":"","optional":true,"defaultValue":"","expandable":false,"children":[]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="activity"/>
+
+#### Returns
+
+<TypeList types={[{"name":"string","type":"`string`","optional":false,"defaultValue":"","description":"","expandable":false,"children":[]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="activity"/>
+
+### progress
+
+#### Parameters
+
+<TypeList types={[{"name":"activityId","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"message","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="progress"/>
+
+### error
+
+#### Parameters
+
+<TypeList types={[{"name":"messageOrError","type":"`string` \\| `Error`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"error","type":"`Error`","description":"","optional":true,"defaultValue":"","expandable":false,"children":[]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="error"/>
+
+### failure
+
+#### Parameters
+
+<TypeList types={[{"name":"activityId","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"message","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="failure"/>
+
+#### Returns
+
+<TypeList types={[{"name":"unknown","type":"`unknown`","optional":false,"defaultValue":"","description":"","expandable":false,"children":[]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="failure"/>
+
+### success
+
+#### Parameters
+
+<TypeList types={[{"name":"activityId","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"message","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="success"/>
+
+#### Returns
+
+<TypeList types={[{"name":"Record","type":"`Record<string, unknown>`","optional":false,"defaultValue":"","description":"","expandable":false,"children":[{"name":"string","type":"`string`","optional":false,"defaultValue":"","description":"","expandable":false,"children":[]},{"name":"unknown","type":"`unknown`","optional":false,"defaultValue":"","description":"","expandable":false,"children":[]}]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="success"/>
+
+### silly
+
+#### Parameters
+
+<TypeList types={[{"name":"message","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="silly"/>
+
+### debug
+
+#### Parameters
+
+<TypeList types={[{"name":"message","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="debug"/>
+
+### verbose
+
+#### Parameters
+
+<TypeList types={[{"name":"message","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="verbose"/>
+
+### http
+
+#### Parameters
+
+<TypeList types={[{"name":"message","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="http"/>
+
+### info
+
+#### Parameters
+
+<TypeList types={[{"name":"message","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="info"/>
+
+### warn
+
+#### Parameters
+
+<TypeList types={[{"name":"message","type":"`string`","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="warn"/>
+
+### log
+
+#### Parameters
+
+<TypeList types={[{"name":"args","type":"`unknown`[]","description":"","optional":false,"defaultValue":"","expandable":false,"children":[]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="log"/>

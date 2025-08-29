@@ -17867,6 +17867,81 @@ Medusa tracks the number of executions for a scheduled job during its current ru
 So, if you restart the Medusa application, the scheduled job will be executed again until it reaches the number of executions specified.
 
 
+# Set Interval for Scheduled Jobs
+
+In this chapter, you'll learn the difference between using intervals and crons for scheduled jobs, and how to use intervals.
+
+## What is a Scheduled Job Interval?
+
+A scheduled job interval is a specific duration that must pass between the execution of scheduled jobs. The timer starts when the Medusa application starts, and it resets every time a job is executed.
+
+For example, if you have a scheduled job that runs on an interval of 5 minutes, the job will run after 5 minutes from application startup. Then, it will run again 5 minutes after the last execution, and so on.
+
+## How to Set an Interval for a Scheduled Job?
+
+To set an interval for a scheduled job, pass in the scheduled job configurations object the `schedule.interval` property with the desired duration.
+
+For example:
+
+```ts title="src/jobs/hello-world.ts" highlights={highlights}
+import { MedusaContainer } from "@medusajs/framework/types"
+
+export default async function greetingJob(container: MedusaContainer) {
+  const logger = container.resolve("logger")
+
+  logger.info("Greeting!")
+}
+
+export const config = {
+  name: "greeting-every-minute",
+  schedule: {
+    interval: 60000 // 1 minute
+  }
+}
+```
+
+The `interval` property accepts a number indicating the duration in milliseconds.
+
+So, the above scheduled job will run every minute, starting one minute after the Medusa application starts.
+
+### Test the Scheduled Job Interval
+
+To test out your scheduled job, start the Medusa application:
+
+```bash npm2yarn
+npm run dev
+```
+
+After a minute, the following message will be logged to the terminal:
+
+```bash
+info:    Greeting!
+```
+
+***
+
+## Scheduled Job Interval vs. Scheduled Job Cron
+
+In the [Scheduled Jobs](https://docs.medusajs.com/learn/fundamentals/scheduled-jobs/index.html.md) chapter, you learned about using the `schedule` configuration to set the schedule for a job using a cron expression. For example, `*/5 * * * *` would run a job every 5 minutes.
+
+|Comparison Aspect|Cron Expression|Interval|
+|---|---|---|
+|Execution Timing|Specific times of the day. For example, at midnight.|After a specific duration between job executions. For example, every 5 minutes.|
+|Execution Consistency|May not run if the specified time is reached and the system is busy|Will run after the specified interval, even if the system is busy|
+
+While using a cron expression is ideal to ensure that the job runs at specific times of the day, the scheduled job will only run when the specified time is reached. So, if the events system is busy when the specified time is reached, the job will not run until the next scheduled time.
+
+For example, if you have a job scheduled with a cron expression to run every 5 minutes, but the system is under heavy load, it may miss the 5-minute mark and not execute the job until the next scheduled time.
+
+In contrast, a scheduled job interval is defined by a specific duration between job executions, regardless of the exact time they are scheduled to run. So, even if the system is busy, the job will still run after the specified interval has passed since the last execution.
+
+### When to Use Intervals for Scheduled Jobs
+
+If your scheduled job must run consistently but not at specific times of the day, use an **interval**. This ensures that the job runs after a defined duration, regardless of the system's state.
+
+If your scheduled job must be executed at specific times of the day, use a cron **expression**. This allows for precise control over when the job is executed, but may result in missed executions if the system is under heavy load.
+
+
 # Scheduled Jobs
 
 In this chapter, you’ll learn about scheduled jobs and how to use them.
@@ -41160,6 +41235,7 @@ Connection to Redis in module 'workflow-engine-redis' established
 - [fetchShippingOptionForOrderWorkflow](https://docs.medusajs.com/references/medusa-workflows/fetchShippingOptionForOrderWorkflow/index.html.md)
 - [getOrderDetailWorkflow](https://docs.medusajs.com/references/medusa-workflows/getOrderDetailWorkflow/index.html.md)
 - [getOrdersListWorkflow](https://docs.medusajs.com/references/medusa-workflows/getOrdersListWorkflow/index.html.md)
+- [listShippingOptionsForOrderWorkflow](https://docs.medusajs.com/references/medusa-workflows/listShippingOptionsForOrderWorkflow/index.html.md)
 - [markOrderFulfillmentAsDeliveredWorkflow](https://docs.medusajs.com/references/medusa-workflows/markOrderFulfillmentAsDeliveredWorkflow/index.html.md)
 - [markPaymentCollectionAsPaid](https://docs.medusajs.com/references/medusa-workflows/markPaymentCollectionAsPaid/index.html.md)
 - [maybeRefreshShippingMethodsWorkflow](https://docs.medusajs.com/references/medusa-workflows/maybeRefreshShippingMethodsWorkflow/index.html.md)
@@ -41316,6 +41392,11 @@ Connection to Redis in module 'workflow-engine-redis' established
 - [deleteSalesChannelsWorkflow](https://docs.medusajs.com/references/medusa-workflows/deleteSalesChannelsWorkflow/index.html.md)
 - [linkProductsToSalesChannelWorkflow](https://docs.medusajs.com/references/medusa-workflows/linkProductsToSalesChannelWorkflow/index.html.md)
 - [updateSalesChannelsWorkflow](https://docs.medusajs.com/references/medusa-workflows/updateSalesChannelsWorkflow/index.html.md)
+- [createViewConfigurationWorkflow](https://docs.medusajs.com/references/medusa-workflows/createViewConfigurationWorkflow/index.html.md)
+- [updateViewConfigurationWorkflow](https://docs.medusajs.com/references/medusa-workflows/updateViewConfigurationWorkflow/index.html.md)
+- [createShippingOptionTypesWorkflow](https://docs.medusajs.com/references/medusa-workflows/createShippingOptionTypesWorkflow/index.html.md)
+- [deleteShippingOptionTypesWorkflow](https://docs.medusajs.com/references/medusa-workflows/deleteShippingOptionTypesWorkflow/index.html.md)
+- [updateShippingOptionTypesWorkflow](https://docs.medusajs.com/references/medusa-workflows/updateShippingOptionTypesWorkflow/index.html.md)
 - [deleteShippingProfileWorkflow](https://docs.medusajs.com/references/medusa-workflows/deleteShippingProfileWorkflow/index.html.md)
 - [validateStepShippingProfileDelete](https://docs.medusajs.com/references/medusa-workflows/validateStepShippingProfileDelete/index.html.md)
 - [createLocationFulfillmentSetWorkflow](https://docs.medusajs.com/references/medusa-workflows/createLocationFulfillmentSetWorkflow/index.html.md)
@@ -41587,7 +41668,13 @@ Connection to Redis in module 'workflow-engine-redis' established
 - [detachLocationsFromSalesChannelsStep](https://docs.medusajs.com/references/medusa-workflows/steps/detachLocationsFromSalesChannelsStep/index.html.md)
 - [detachProductsFromSalesChannelsStep](https://docs.medusajs.com/references/medusa-workflows/steps/detachProductsFromSalesChannelsStep/index.html.md)
 - [updateSalesChannelsStep](https://docs.medusajs.com/references/medusa-workflows/steps/updateSalesChannelsStep/index.html.md)
+- [createViewConfigurationStep](https://docs.medusajs.com/references/medusa-workflows/steps/createViewConfigurationStep/index.html.md)
+- [setActiveViewConfigurationStep](https://docs.medusajs.com/references/medusa-workflows/steps/setActiveViewConfigurationStep/index.html.md)
+- [updateViewConfigurationStep](https://docs.medusajs.com/references/medusa-workflows/steps/updateViewConfigurationStep/index.html.md)
+- [createShippingOptionTypesStep](https://docs.medusajs.com/references/medusa-workflows/steps/createShippingOptionTypesStep/index.html.md)
+- [deleteShippingOptionTypesStep](https://docs.medusajs.com/references/medusa-workflows/steps/deleteShippingOptionTypesStep/index.html.md)
 - [listShippingOptionsForContextStep](https://docs.medusajs.com/references/medusa-workflows/steps/listShippingOptionsForContextStep/index.html.md)
+- [updateShippingOptionTypesStep](https://docs.medusajs.com/references/medusa-workflows/steps/updateShippingOptionTypesStep/index.html.md)
 - [deleteShippingProfilesStep](https://docs.medusajs.com/references/medusa-workflows/steps/deleteShippingProfilesStep/index.html.md)
 - [createStockLocations](https://docs.medusajs.com/references/medusa-workflows/steps/createStockLocations/index.html.md)
 - [deleteStockLocationsStep](https://docs.medusajs.com/references/medusa-workflows/steps/deleteStockLocationsStep/index.html.md)
@@ -43004,6 +43091,76 @@ Emitted when sales channels are deleted.
 The following workflows emit this event when they're executed. These workflows are executed by Medusa's API routes. You can also view the events emitted by API routes in the [Store](https://docs.medusajs.com/api/store) and [Admin](https://docs.medusajs.com/api/admin) API references.
 
 - [deleteSalesChannelsWorkflow](https://docs.medusajs.com/references/medusa-workflows/deleteSalesChannelsWorkflow/index.html.md)
+
+***
+
+## Shipping Option Type Events
+
+### Summary
+
+|Event|Description|
+|---|---|
+|shipping-option-type.updated|Emitted when shipping option types are updated.|
+|shipping-option-type.created|Emitted when shipping option types are created.|
+|shipping-option-type.deleted|Emitted when shipping option types are deleted.|
+
+### shipping-option-type.updated&#xA;
+
+Emitted when shipping option types are updated.
+
+#### Payload
+
+```ts
+[{
+  id, // The ID of the shipping option type
+}]
+```
+
+#### Workflows Emitting this Event
+
+The following workflows emit this event when they're executed. These workflows are executed by Medusa's API routes. You can also view the events emitted by API routes in the [Store](https://docs.medusajs.com/api/store) and [Admin](https://docs.medusajs.com/api/admin) API references.
+
+- [updateShippingOptionTypesWorkflow](https://docs.medusajs.com/references/medusa-workflows/updateShippingOptionTypesWorkflow/index.html.md)
+
+***
+
+### shipping-option-type.created&#xA;
+
+Emitted when shipping option types are created.
+
+#### Payload
+
+```ts
+[{
+  id, // The ID of the shipping option type
+}]
+```
+
+#### Workflows Emitting this Event
+
+The following workflows emit this event when they're executed. These workflows are executed by Medusa's API routes. You can also view the events emitted by API routes in the [Store](https://docs.medusajs.com/api/store) and [Admin](https://docs.medusajs.com/api/admin) API references.
+
+- [createShippingOptionTypesWorkflow](https://docs.medusajs.com/references/medusa-workflows/createShippingOptionTypesWorkflow/index.html.md)
+
+***
+
+### shipping-option-type.deleted&#xA;
+
+Emitted when shipping option types are deleted.
+
+#### Payload
+
+```ts
+[{
+  id, // The ID of the shipping option type
+}]
+```
+
+#### Workflows Emitting this Event
+
+The following workflows emit this event when they're executed. These workflows are executed by Medusa's API routes. You can also view the events emitted by API routes in the [Store](https://docs.medusajs.com/api/store) and [Admin](https://docs.medusajs.com/api/admin) API references.
+
+- [deleteShippingOptionTypesWorkflow](https://docs.medusajs.com/references/medusa-workflows/deleteShippingOptionTypesWorkflow/index.html.md)
 
 ***
 
@@ -91021,6 +91178,7 @@ To learn more about the commerce features that Medusa provides, check out Medusa
 - [list](https://docs.medusajs.com/references/js_sdk/admin/Order/methods/js_sdk.admin.Order.list/index.html.md)
 - [listChanges](https://docs.medusajs.com/references/js_sdk/admin/Order/methods/js_sdk.admin.Order.listChanges/index.html.md)
 - [listLineItems](https://docs.medusajs.com/references/js_sdk/admin/Order/methods/js_sdk.admin.Order.listLineItems/index.html.md)
+- [listShippingOptions](https://docs.medusajs.com/references/js_sdk/admin/Order/methods/js_sdk.admin.Order.listShippingOptions/index.html.md)
 - [markAsDelivered](https://docs.medusajs.com/references/js_sdk/admin/Order/methods/js_sdk.admin.Order.markAsDelivered/index.html.md)
 - [requestTransfer](https://docs.medusajs.com/references/js_sdk/admin/Order/methods/js_sdk.admin.Order.requestTransfer/index.html.md)
 - [retrieve](https://docs.medusajs.com/references/js_sdk/admin/Order/methods/js_sdk.admin.Order.retrieve/index.html.md)
@@ -91162,6 +91320,11 @@ To learn more about the commerce features that Medusa provides, check out Medusa
 - [retrieve](https://docs.medusajs.com/references/js_sdk/admin/ShippingOption/methods/js_sdk.admin.ShippingOption.retrieve/index.html.md)
 - [update](https://docs.medusajs.com/references/js_sdk/admin/ShippingOption/methods/js_sdk.admin.ShippingOption.update/index.html.md)
 - [updateRules](https://docs.medusajs.com/references/js_sdk/admin/ShippingOption/methods/js_sdk.admin.ShippingOption.updateRules/index.html.md)
+- [create](https://docs.medusajs.com/references/js_sdk/admin/ShippingOptionType/methods/js_sdk.admin.ShippingOptionType.create/index.html.md)
+- [delete](https://docs.medusajs.com/references/js_sdk/admin/ShippingOptionType/methods/js_sdk.admin.ShippingOptionType.delete/index.html.md)
+- [list](https://docs.medusajs.com/references/js_sdk/admin/ShippingOptionType/methods/js_sdk.admin.ShippingOptionType.list/index.html.md)
+- [retrieve](https://docs.medusajs.com/references/js_sdk/admin/ShippingOptionType/methods/js_sdk.admin.ShippingOptionType.retrieve/index.html.md)
+- [update](https://docs.medusajs.com/references/js_sdk/admin/ShippingOptionType/methods/js_sdk.admin.ShippingOptionType.update/index.html.md)
 - [create](https://docs.medusajs.com/references/js_sdk/admin/ShippingProfile/methods/js_sdk.admin.ShippingProfile.create/index.html.md)
 - [delete](https://docs.medusajs.com/references/js_sdk/admin/ShippingProfile/methods/js_sdk.admin.ShippingProfile.delete/index.html.md)
 - [list](https://docs.medusajs.com/references/js_sdk/admin/ShippingProfile/methods/js_sdk.admin.ShippingProfile.list/index.html.md)
@@ -94721,6 +94884,7 @@ Download this reference as an OpenApi YAML file. You can import this file to too
 - [DELETE /admin/exchanges/{id}/outbound/shipping-method/{action_id}](https://docs.medusajs.com/api/admin#exchanges_deleteexchangesidoutboundshippingmethodaction_id)
 - [POST /admin/exchanges/{id}/request](https://docs.medusajs.com/api/admin#exchanges_postexchangesidrequest)
 - [DELETE /admin/exchanges/{id}/request](https://docs.medusajs.com/api/admin#exchanges_deleteexchangesidrequest)
+- [GET /admin/feature-flags](https://docs.medusajs.com/api/admin#feature-flags_getfeatureflags)
 - [GET /admin/fulfillment-providers](https://docs.medusajs.com/api/admin#fulfillment-providers_getfulfillmentproviders)
 - [GET /admin/fulfillment-providers/{id}/options](https://docs.medusajs.com/api/admin#fulfillment-providers_getfulfillmentprovidersidoptions)
 - [DELETE /admin/fulfillment-sets/{id}](https://docs.medusajs.com/api/admin#fulfillment-sets_deletefulfillmentsetsid)
@@ -94781,6 +94945,7 @@ Download this reference as an OpenApi YAML file. You can import this file to too
 - [POST /admin/orders/{id}/fulfillments/{fulfillment_id}/shipments](https://docs.medusajs.com/api/admin#orders_postordersidfulfillmentsfulfillment_idshipments)
 - [GET /admin/orders/{id}/line-items](https://docs.medusajs.com/api/admin#orders_getordersidlineitems)
 - [GET /admin/orders/{id}/preview](https://docs.medusajs.com/api/admin#orders_getordersidpreview)
+- [GET /admin/orders/{id}/shipping-options](https://docs.medusajs.com/api/admin#orders_getordersidshippingoptions)
 - [POST /admin/orders/{id}/transfer](https://docs.medusajs.com/api/admin#orders_postordersidtransfer)
 - [POST /admin/orders/{id}/transfer/cancel](https://docs.medusajs.com/api/admin#orders_postordersidtransfercancel)
 - [POST /admin/payment-collections](https://docs.medusajs.com/api/admin#payment-collections_postpaymentcollections)
@@ -94906,6 +95071,11 @@ Download this reference as an OpenApi YAML file. You can import this file to too
 - [POST /admin/sales-channels/{id}](https://docs.medusajs.com/api/admin#sales-channels_postsaleschannelsid)
 - [DELETE /admin/sales-channels/{id}](https://docs.medusajs.com/api/admin#sales-channels_deletesaleschannelsid)
 - [POST /admin/sales-channels/{id}/products](https://docs.medusajs.com/api/admin#sales-channels_postsaleschannelsidproducts)
+- [GET /admin/shipping-option-types](https://docs.medusajs.com/api/admin#shipping-option-types_getshippingoptiontypes)
+- [POST /admin/shipping-option-types](https://docs.medusajs.com/api/admin#shipping-option-types_postshippingoptiontypes)
+- [GET /admin/shipping-option-types/{id}](https://docs.medusajs.com/api/admin#shipping-option-types_getshippingoptiontypesid)
+- [POST /admin/shipping-option-types/{id}](https://docs.medusajs.com/api/admin#shipping-option-types_postshippingoptiontypesid)
+- [DELETE /admin/shipping-option-types/{id}](https://docs.medusajs.com/api/admin#shipping-option-types_deleteshippingoptiontypesid)
 - [GET /admin/shipping-options](https://docs.medusajs.com/api/admin#shipping-options_getshippingoptions)
 - [POST /admin/shipping-options](https://docs.medusajs.com/api/admin#shipping-options_postshippingoptions)
 - [GET /admin/shipping-options/{id}](https://docs.medusajs.com/api/admin#shipping-options_getshippingoptionsid)

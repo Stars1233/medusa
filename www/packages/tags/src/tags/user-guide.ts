@@ -160,6 +160,10 @@ export const userGuide = [
     "path": "https://docs.medusajs.com/user-guide/settings/locations-and-shipping"
   },
   {
+    "title": "Manage Shipping Option Types",
+    "path": "https://docs.medusajs.com/user-guide/settings/locations-and-shipping/shipping-option-types"
+  },
+  {
     "title": "Manage Shipping Profiles",
     "path": "https://docs.medusajs.com/user-guide/settings/locations-and-shipping/shipping-profiles"
   },
@@ -186,10 +190,6 @@ export const userGuide = [
   {
     "title": "Manage Sales Channels",
     "path": "https://docs.medusajs.com/user-guide/settings/sales-channels"
-  },
-  {
-    "title": "Manage Shipping Option Types",
-    "path": "https://docs.medusajs.com/user-guide/settings/shipping-option-types"
   },
   {
     "title": "Manage Store",

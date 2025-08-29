@@ -43,6 +43,14 @@ const generatedgeneratedTroubleshootingSidebarSidebar = {
           "path": "/troubleshooting/general-errors",
           "title": "General Errors",
           "children": []
+        },
+        {
+          "loaded": true,
+          "isPathHref": true,
+          "type": "link",
+          "path": "/troubleshooting/pnpm",
+          "title": "pnpm Errors",
+          "children": []
         }
       ]
     },
@@ -149,6 +157,14 @@ const generatedgeneratedTroubleshootingSidebarSidebar = {
               "children": []
             }
           ]
+        },
+        {
+          "loaded": true,
+          "isPathHref": true,
+          "type": "link",
+          "path": "/troubleshooting/scheduled-job-not-running",
+          "title": "Scheduled Job Not Running",
+          "children": []
         },
         {
           "loaded": true,

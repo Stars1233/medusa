@@ -18,7 +18,7 @@ such as [requestItemReturnWorkflow](../core_flows.Order.Workflows_Order.requestI
 You can use this workflow within your customizations or your own custom workflows, allowing you to wrap custom logic around
 creating an order change action.
 
-<SourceCodeLink link="https://github.com/medusajs/medusa/blob/61a25dd07370282cad1dea30e13c3090ebea4f1b/packages/core/core-flows/src/order/workflows/create-order-change-actions.ts#L25" />
+<SourceCodeLink link="https://github.com/medusajs/medusa/blob/9069e9279ee230384cf09c553f60ab6caa0e7012/packages/core/core-flows/src/order/workflows/create-order-change-actions.ts#L25" />
 
 ## Examples
 
@@ -39,7 +39,7 @@ export async function POST(
   const { result } = await createOrderChangeActionsWorkflow(req.scope)
     .run({
       input: [{
-        "action": "CREDIT_LINE_ADD"
+        "action": "RECEIVE_DAMAGED_RETURN_ITEM"
       }]
     })
 
@@ -64,7 +64,7 @@ export default async function handleOrderPlaced({
   const { result } = await createOrderChangeActionsWorkflow(container)
     .run({
       input: [{
-        "action": "CREDIT_LINE_ADD"
+        "action": "RECEIVE_DAMAGED_RETURN_ITEM"
       }]
     })
 
@@ -89,7 +89,7 @@ export default async function myCustomJob(
   const { result } = await createOrderChangeActionsWorkflow(container)
     .run({
       input: [{
-        "action": "CREDIT_LINE_ADD"
+        "action": "RECEIVE_DAMAGED_RETURN_ITEM"
       }]
     })
 
@@ -115,7 +115,7 @@ const myWorkflow = createWorkflow(
     const result = createOrderChangeActionsWorkflow
       .runAsStep({
         input: [{
-          "action": "CREDIT_LINE_ADD"
+          "action": "RECEIVE_DAMAGED_RETURN_ITEM"
         }]
       })
   }

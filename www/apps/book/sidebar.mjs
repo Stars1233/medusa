@@ -482,6 +482,11 @@ export const sidebars = [
                 path: "/learn/fundamentals/scheduled-jobs/execution-number",
                 title: "Execution Number",
               },
+              {
+                type: "link",
+                path: "/learn/fundamentals/scheduled-jobs/interval",
+                title: "Set Interval",
+              },
             ],
           },
           {

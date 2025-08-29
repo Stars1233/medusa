@@ -31,7 +31,7 @@
  *   content:
  *     application/json:
  *       schema:
- *         $ref: "#/components/schemas/AdminUpdateShippingOption"
+ *         $ref: "#/components/schemas/AdminUpdateShippingOptionType"
  * x-codeSamples:
  *   - lang: JavaScript
  *     label: JS SDK

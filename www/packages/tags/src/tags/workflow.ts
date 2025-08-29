@@ -568,6 +568,10 @@ export const workflow = [
     "path": "https://docs.medusajs.com/resources/references/medusa-workflows/getOrdersListWorkflow"
   },
   {
+    "title": "listShippingOptionsForOrderWorkflow",
+    "path": "https://docs.medusajs.com/resources/references/medusa-workflows/listShippingOptionsForOrderWorkflow"
+  },
+  {
     "title": "markOrderFulfillmentAsDeliveredWorkflow",
     "path": "https://docs.medusajs.com/resources/references/medusa-workflows/markOrderFulfillmentAsDeliveredWorkflow"
   },
@@ -1026,6 +1030,18 @@ export const workflow = [
   {
     "title": "updateSalesChannelsWorkflow",
     "path": "https://docs.medusajs.com/resources/references/medusa-workflows/updateSalesChannelsWorkflow"
+  },
+  {
+    "title": "createShippingOptionTypesWorkflow",
+    "path": "https://docs.medusajs.com/resources/references/medusa-workflows/createShippingOptionTypesWorkflow"
+  },
+  {
+    "title": "deleteShippingOptionTypesWorkflow",
+    "path": "https://docs.medusajs.com/resources/references/medusa-workflows/deleteShippingOptionTypesWorkflow"
+  },
+  {
+    "title": "updateShippingOptionTypesWorkflow",
+    "path": "https://docs.medusajs.com/resources/references/medusa-workflows/updateShippingOptionTypesWorkflow"
   },
   {
     "title": "deleteShippingProfileWorkflow",

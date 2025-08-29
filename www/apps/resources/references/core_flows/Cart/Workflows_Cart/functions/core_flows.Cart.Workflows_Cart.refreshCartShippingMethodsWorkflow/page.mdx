@@ -19,7 +19,7 @@ and retrieve their correct pricing after a cart update. This workflow is used by
 
 You can use this workflow within your own customizations or custom workflows, allowing you to refresh the cart's shipping method after making updates to the cart.
 
-<SourceCodeLink link="https://github.com/medusajs/medusa/blob/61a25dd07370282cad1dea30e13c3090ebea4f1b/packages/core/core-flows/src/cart/workflows/refresh-cart-shipping-methods.ts#L52" />
+<SourceCodeLink link="https://github.com/medusajs/medusa/blob/9069e9279ee230384cf09c553f60ab6caa0e7012/packages/core/core-flows/src/cart/workflows/refresh-cart-shipping-methods.ts#L52" />
 
 ## Examples
 
@@ -128,7 +128,7 @@ const myWorkflow = createWorkflow(
 
 ## Steps
 
-<WorkflowDiagram workflow={{"name":"refreshCartShippingMethodsWorkflow","steps":[{"type":"hook","name":"validate","description":"This hook is executed before all operations. You can consume this hook to perform any custom validation. If validation fails, you can throw an error to stop the workflow execution.","link":"#validate","depth":2},{"type":"when","condition":"{\n      return !!listShippingOptionsInput?.length\n    }","depth":"3","steps":[{"type":"workflow","name":"listShippingOptionsForCartWithPricingWorkflow","description":"List a cart's shipping options with prices.","link":"../core_flows.Cart.Workflows_Cart.listShippingOptionsForCartWithPricingWorkflow/page.mdx","depth":3},{"type":"step","name":"removeShippingMethodFromCartStep","description":"This step removes shipping methods from a cart.","link":"../../../Steps_Cart/functions/core_flows.Cart.Steps_Cart.removeShippingMethodFromCartStep/page.mdx","depth":3},{"type":"step","name":"updateShippingMethodsStep","description":"This step updates a cart's shipping methods.","link":"../../../Steps_Cart/functions/core_flows.Cart.Steps_Cart.updateShippingMethodsStep/page.mdx","depth":3}]}]}} />
+<WorkflowDiagram workflow={{"name":"refreshCartShippingMethodsWorkflow","steps":[{"type":"hook","name":"validate","description":"This hook is executed before all operations. You can consume this hook to perform any custom validation. If validation fails, you can throw an error to stop the workflow execution.","link":"#validate","depth":2},{"type":"when","condition":"{\n        return !!listShippingOptionsInput?.length\n      }","depth":"3","steps":[{"type":"workflow","name":"listShippingOptionsForCartWithPricingWorkflow","description":"List a cart's shipping options with prices.","link":"../core_flows.Cart.Workflows_Cart.listShippingOptionsForCartWithPricingWorkflow/page.mdx","depth":3},{"type":"step","name":"removeShippingMethodFromCartStep","description":"This step removes shipping methods from a cart.","link":"../../../Steps_Cart/functions/core_flows.Cart.Steps_Cart.removeShippingMethodFromCartStep/page.mdx","depth":3},{"type":"step","name":"updateShippingMethodsStep","description":"This step updates a cart's shipping methods.","link":"../../../Steps_Cart/functions/core_flows.Cart.Steps_Cart.updateShippingMethodsStep/page.mdx","depth":3}]}]}} />
 
 ## Input
 

@@ -1,10 +1,5 @@
-import {
-  existsSync,
-  readFileSync,
-  readdirSync,
-  rmSync,
-  writeFileSync,
-} from "fs"
+import { existsSync, readFileSync, rmSync, writeFileSync } from "fs"
+import { fdir } from "fdir"
 import { OpenAPIV3 } from "openapi-types"
 import path from "path"
 import ts from "typescript"
@@ -78,175 +73,181 @@ export default async function () {
   console.log("Cleaning OAS files...")
 
   // read files under the operations/{area} directory
-  areas.forEach((area) => {
-    const areaPath = path.join(oasOperationsPath, area)
-    if (!existsSync(areaPath)) {
-      return
-    }
-
-    readdirSync(areaPath, {
-      recursive: true,
-      encoding: "utf-8",
-    }).forEach((oasFile) => {
-      const filePath = path.join(areaPath, oasFile)
-      const { oas, oasPrefix } = parseOas(readFileSync(filePath, "utf-8")) || {}
-
-      if (!oas || !oasPrefix) {
+  await Promise.all(
+    areas.map(async (area) => {
+      const areaPath = path.join(oasOperationsPath, area)
+      if (!existsSync(areaPath)) {
         return
       }
 
-      // decode oasPrefix
-      const matchOasPrefix = OAS_PREFIX_REGEX.exec(oasPrefix)
-      if (
-        !matchOasPrefix?.groups?.method ||
-        !matchOasPrefix.groups.path ||
-        matchOasPrefix.groups.path.startsWith("/auth/")
-      ) {
-        return
-      }
-      const splitPath = matchOasPrefix.groups.path.substring(1).split("/")
+      const dirFiles = await new fdir()
+        .withFullPaths()
+        .crawl(areaPath)
+        .withPromise()
 
-      // normalize path by replacing {paramName} with [paramName]
-      const normalizedOasPrefix = splitPath
-        .map((item) => item.replace(/^\{(.+)\}$/, "[$1]"))
-        .join("/")
-      const sourceFilePath = path.join(
-        apiRoutesPath,
-        normalizedOasPrefix,
-        "route.ts"
-      )
+      dirFiles.forEach((oasFile) => {
+        const { oas, oasPrefix } =
+          parseOas(readFileSync(oasFile, "utf-8")) || {}
 
-      if (!oas["x-ignoreCleanup"]) {
-        // check if a route exists for the path
-        if (!existsSync(sourceFilePath)) {
-          // remove OAS file
-          rmSync(filePath, {
-            force: true,
-          })
+        if (!oas || !oasPrefix) {
           return
         }
 
-        // check if method exists in the file
-        let exists = false
-        const program = ts.createProgram([sourceFilePath], {})
+        // decode oasPrefix
+        const matchOasPrefix = OAS_PREFIX_REGEX.exec(oasPrefix)
+        if (
+          !matchOasPrefix?.groups?.method ||
+          !matchOasPrefix.groups.path ||
+          matchOasPrefix.groups.path.startsWith("/auth/")
+        ) {
+          return
+        }
+        const splitPath = matchOasPrefix.groups.path.substring(1).split("/")
 
-        const oasKindGenerator = new OasKindGenerator({
-          checker: program.getTypeChecker(),
-          generatorEventManager: new GeneratorEventManager(),
-          additionalOptions: {},
+        // normalize path by replacing {paramName} with [paramName]
+        const normalizedOasPrefix = splitPath
+          .map((item) => item.replace(/^\{(.+)\}$/, "[$1]"))
+          .join("/")
+        const sourceFilePath = path.join(
+          apiRoutesPath,
+          normalizedOasPrefix,
+          "route.ts"
+        )
+
+        if (!oas["x-ignoreCleanup"]) {
+          // check if a route exists for the path
+          if (!existsSync(sourceFilePath)) {
+            // remove OAS file
+            rmSync(oasFile, {
+              force: true,
+            })
+            return
+          }
+
+          // check if method exists in the file
+          let exists = false
+          const program = ts.createProgram([sourceFilePath], {})
+
+          const oasKindGenerator = new OasKindGenerator({
+            checker: program.getTypeChecker(),
+            generatorEventManager: new GeneratorEventManager(),
+            additionalOptions: {},
+          })
+          const sourceFile = program.getSourceFile(sourceFilePath)
+
+          if (!sourceFile) {
+            // remove file
+            rmSync(oasFile, {
+              force: true,
+            })
+            return
+          }
+
+          const visitChildren = (node: ts.Node) => {
+            if (
+              !exists &&
+              oasKindGenerator.isAllowed(node) &&
+              oasKindGenerator.canDocumentNode(node) &&
+              oasKindGenerator.getHTTPMethodName(node) ===
+                matchOasPrefix.groups!.method
+            ) {
+              exists = true
+            } else if (!exists) {
+              ts.forEachChild(node, visitChildren)
+            }
+          }
+
+          ts.forEachChild(sourceFile, visitChildren)
+
+          if (!exists) {
+            // remove OAS file
+            rmSync(oasFile, {
+              force: true,
+            })
+            return
+          }
+        }
+
+        // collect tags
+        oas.tags?.forEach((tag) => {
+          const areaTags = tags.get(area as OasArea)
+          areaTags?.add(tag)
         })
-        const sourceFile = program.getSourceFile(sourceFilePath)
 
-        if (!sourceFile) {
-          // remove file
-          rmSync(filePath, {
-            force: true,
-          })
-          return
-        }
-
-        const visitChildren = (node: ts.Node) => {
-          if (
-            !exists &&
-            oasKindGenerator.isAllowed(node) &&
-            oasKindGenerator.canDocumentNode(node) &&
-            oasKindGenerator.getHTTPMethodName(node) ===
-              matchOasPrefix.groups!.method
-          ) {
-            exists = true
-          } else if (!exists) {
-            ts.forEachChild(node, visitChildren)
-          }
-        }
-
-        ts.forEachChild(sourceFile, visitChildren)
-
-        if (!exists) {
-          // remove OAS file
-          rmSync(filePath, {
-            force: true,
-          })
-          return
-        }
-      }
-
-      // collect tags
-      oas.tags?.forEach((tag) => {
-        const areaTags = tags.get(area as OasArea)
-        areaTags?.add(tag)
-      })
-
-      // collect schemas
-      oas.parameters?.forEach((parameter) => {
-        if (oasSchemaHelper.isRefObject(parameter)) {
-          referencedSchemas.add(
-            oasSchemaHelper.normalizeSchemaName(parameter.$ref)
-          )
-
-          return
-        }
-
-        if (!parameter.schema) {
-          return
-        }
-
-        if (oasSchemaHelper.isRefObject(parameter.schema)) {
-          referencedSchemas.add(
-            oasSchemaHelper.normalizeSchemaName(parameter.schema.$ref)
-          )
-
-          return
-        }
-
-        testAndFindReferenceSchema(parameter.schema)
-      })
-
-      if (oas.requestBody) {
-        if (oasSchemaHelper.isRefObject(oas.requestBody)) {
-          referencedSchemas.add(
-            oasSchemaHelper.normalizeSchemaName(oas.requestBody.$ref)
-          )
-        } else {
-          const requestBodySchema =
-            oas.requestBody.content[Object.keys(oas.requestBody.content)[0]]
-              .schema
-          if (requestBodySchema) {
-            testAndFindReferenceSchema(requestBodySchema)
-          }
-        }
-      }
-
-      if (oas.responses) {
-        const successResponseKey = Object.keys(oas.responses)[0]
-        if (!Object.keys(DEFAULT_OAS_RESPONSES).includes(successResponseKey)) {
-          const responseObj = oas.responses[successResponseKey]
-          if (oasSchemaHelper.isRefObject(responseObj)) {
+        // collect schemas
+        oas.parameters?.forEach((parameter) => {
+          if (oasSchemaHelper.isRefObject(parameter)) {
             referencedSchemas.add(
-              oasSchemaHelper.normalizeSchemaName(responseObj.$ref)
+              oasSchemaHelper.normalizeSchemaName(parameter.$ref)
             )
-          } else if (responseObj.content) {
-            const responseBodySchema =
-              responseObj.content[Object.keys(responseObj.content)[0]].schema
-            if (responseBodySchema) {
-              testAndFindReferenceSchema(responseBodySchema)
+
+            return
+          }
+
+          if (!parameter.schema) {
+            return
+          }
+
+          if (oasSchemaHelper.isRefObject(parameter.schema)) {
+            referencedSchemas.add(
+              oasSchemaHelper.normalizeSchemaName(parameter.schema.$ref)
+            )
+
+            return
+          }
+
+          testAndFindReferenceSchema(parameter.schema)
+        })
+
+        if (oas.requestBody) {
+          if (oasSchemaHelper.isRefObject(oas.requestBody)) {
+            referencedSchemas.add(
+              oasSchemaHelper.normalizeSchemaName(oas.requestBody.$ref)
+            )
+          } else {
+            const requestBodySchema =
+              oas.requestBody.content[Object.keys(oas.requestBody.content)[0]]
+                .schema
+            if (requestBodySchema) {
+              testAndFindReferenceSchema(requestBodySchema)
             }
           }
         }
-      }
+
+        if (oas.responses) {
+          const successResponseKey = Object.keys(oas.responses)[0]
+          if (
+            !Object.keys(DEFAULT_OAS_RESPONSES).includes(successResponseKey)
+          ) {
+            const responseObj = oas.responses[successResponseKey]
+            if (oasSchemaHelper.isRefObject(responseObj)) {
+              referencedSchemas.add(
+                oasSchemaHelper.normalizeSchemaName(responseObj.$ref)
+              )
+            } else if (responseObj.content) {
+              const responseBodySchema =
+                responseObj.content[Object.keys(responseObj.content)[0]].schema
+              if (responseBodySchema) {
+                testAndFindReferenceSchema(responseBodySchema)
+              }
+            }
+          }
+        }
+      })
     })
-  })
+  )
 
   console.log("Clean tags...")
 
   // check if any tags should be removed
   const oasBasePath = path.join(oasOutputBasePath, "base")
-  readdirSync(oasBasePath, {
-    recursive: true,
-    encoding: "utf-8",
-  }).forEach((baseYaml) => {
-    const baseYamlPath = path.join(oasBasePath, baseYaml)
+  const baseFiles = await new fdir()
+    .withFullPaths()
+    .crawl(oasBasePath)
+    .withPromise()
+  baseFiles.forEach((baseYaml) => {
     const parsedBaseYaml = parse(
-      readFileSync(baseYamlPath, "utf-8")
+      readFileSync(baseYaml, "utf-8")
     ) as OpenApiDocument
 
     const area = path.basename(baseYaml).split(".")[0] as OasArea
@@ -266,7 +267,7 @@ export default async function () {
         return tagA.name.localeCompare(tagB.name)
       })
       // write to the file
-      writeFileSync(baseYamlPath, stringify(parsedBaseYaml))
+      writeFileSync(baseYaml, stringify(parsedBaseYaml))
     }
 
     // collect referenced schemas
@@ -284,18 +285,18 @@ export default async function () {
   // check if any schemas should be removed
   // a schema is removed if no other schemas/operations reference it
   const oasSchemasPath = path.join(oasOutputBasePath, "schemas")
-  readdirSync(oasSchemasPath, {
-    recursive: true,
-    encoding: "utf-8",
-  }).forEach((schemaYaml) => {
-    const schemaPath = path.join(oasSchemasPath, schemaYaml)
+  const oasSchemaFiles = await new fdir()
+    .withFullPaths()
+    .crawl(oasSchemasPath)
+    .withPromise()
+  oasSchemaFiles.forEach((schemaYaml) => {
     const parsedSchema = oasSchemaHelper.parseSchema(
-      readFileSync(schemaPath, "utf-8")
+      readFileSync(schemaYaml, "utf-8")
     )
 
     if (!parsedSchema) {
       // remove file
-      rmSync(schemaPath, {
+      rmSync(schemaYaml, {
         force: true,
       })
       return
@@ -311,19 +312,19 @@ export default async function () {
   })
 
   // clean up schemas
-  allSchemas.forEach((schemaName) => {
-    if (
-      referencedSchemas.has(schemaName) ||
-      ignoreSchemas.includes(schemaName)
-    ) {
-      return
-    }
-
-    // schema isn't referenced anywhere, so remove it
-    rmSync(path.join(oasSchemasPath, `${schemaName}.ts`), {
-      force: true,
+  Array.from(allSchemas)
+    .filter((schemaName) => {
+      return (
+        !referencedSchemas.has(schemaName) &&
+        !ignoreSchemas.includes(schemaName)
+      )
     })
-  })
+    .forEach((schemaName) => {
+      // schema isn't referenced anywhere, so remove it
+      rmSync(path.join(oasSchemasPath, `${schemaName}.ts`), {
+        force: true,
+      })
+    })
 
   console.log("Finished clean up")
 }

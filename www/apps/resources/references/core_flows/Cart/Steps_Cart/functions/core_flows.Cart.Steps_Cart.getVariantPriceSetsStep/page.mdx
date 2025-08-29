@@ -1,6 +1,10 @@
 ---
 slug: /references/medusa-workflows/steps/getVariantPriceSetsStep
 sidebar_label: getVariantPriceSetsStep
+tags:
+  - pricing
+  - query
+  - step
 ---
 
 import { TypeList, WorkflowDiagram } from "docs-ui"
@@ -13,28 +17,30 @@ This step retrieves the calculated price sets of the specified variants.
 
 ## Example
 
-To retrieve a variant's price sets:
+To retrieve variant price sets with shared context:
 
 ```ts
 const data = getVariantPriceSetsStep({
   variantIds: ["variant_123"],
+  context: { currency_code: "usd" }
 })
 ```
 
-To retrieve the calculated price sets of a variant:
+To retrieve variant price sets with individual contexts:
 
 ```ts
 const data = getVariantPriceSetsStep({
-  variantIds: ["variant_123"],
-  context: {
-    currency_code: "usd"
-  }
+  data: [
+    { variantId: "variant_123", context: { currency_code: "usd" } },
+    { variantId: "variant_456", context: { currency_code: "usd" } }, // Same context - will be batched
+    { variantId: "variant_789", context: { currency_code: "eur" } }
+  ]
 })
 ```
 
 ## Input
 
-<TypeList types={[{"name":"GetVariantPriceSetsStepInput","type":"[GetVariantPriceSetsStepInput](../../../../interfaces/core_flows.GetVariantPriceSetsStepInput/page.mdx)","optional":false,"defaultValue":"","description":"The details of the variants to get price sets for.","expandable":false,"children":[{"name":"variantIds","type":"`string`[]","description":"The IDs of the variants to get price sets for.","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"context","type":"`Record<string, unknown>`","description":"The context to use when calculating the price sets.\n\nLearn more in [this documentation](https://docs.medusajs.com/resources/commerce-modules/product/guides/price#retrieve-calculated-price-for-a-context).","optional":true,"defaultValue":"","expandable":false,"children":[]}]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" openedLevel={1} sectionTitle="getVariantPriceSetsStep"/>
+<TypeList types={[{"name":"GetVariantPriceSetsStepInput \\| GetVariantPriceSetsStepBulkInput","type":"[GetVariantPriceSetsStepInput](../../../../interfaces/core_flows.GetVariantPriceSetsStepInput/page.mdx) \\| [GetVariantPriceSetsStepBulkInput](../../../../interfaces/core_flows.GetVariantPriceSetsStepBulkInput/page.mdx)","optional":false,"defaultValue":"","description":"","expandable":false,"children":[{"name":"GetVariantPriceSetsStepInput \\| GetVariantPriceSetsStepBulkInput","type":"[GetVariantPriceSetsStepInput](../../../../interfaces/core_flows.GetVariantPriceSetsStepInput/page.mdx) \\| [GetVariantPriceSetsStepBulkInput](../../../../interfaces/core_flows.GetVariantPriceSetsStepBulkInput/page.mdx)","optional":false,"defaultValue":"","description":"","expandable":false,"children":[]}]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" openedLevel={1} sectionTitle="getVariantPriceSetsStep"/>
 
 ## Output
 

@@ -88,7 +88,7 @@ class DefaultKindGenerator<T extends ts.Node = ts.Node> {
    * @returns {boolean} Whether this generator can be used with the specified node.
    */
   isAllowed(node: ts.Node): node is T {
-    return this.allowedKinds.includes(node.kind)
+    return !this.isIgnored(node) && this.allowedKinds.includes(node.kind)
   }
 
   /**
@@ -637,6 +637,18 @@ class DefaultKindGenerator<T extends ts.Node = ts.Node> {
       sinceTag,
       featureFlagTag,
     }
+  }
+
+  /**
+   * Check if a node is ignored.
+   *
+   * @param node - The node to check.
+   * @returns Whether the node is ignored.
+   */
+  isIgnored(node: ts.Node): boolean {
+    return ts
+      .getJSDocTags(node)
+      .some((tag) => tag.tagName.getText() === "ignore")
   }
 }
 

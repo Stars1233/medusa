@@ -203,6 +203,10 @@ class OasKindGenerator extends FunctionKindGenerator {
       return false
     }
 
+    if (this.isIgnored(functionNode)) {
+      return false
+    }
+
     const hasCorrectRequestType = this.REQUEST_TYPE_NAMES.some(
       (name) => functionNode.parameters[0].type?.getText().startsWith(name)
     )
@@ -2653,9 +2657,16 @@ class OasKindGenerator extends FunctionKindGenerator {
         if (
           fnText.includes(`${workflowName}(`) ||
           fnText.includes(`${workflowName} (`) ||
-          fnText.includes(`${workflowName}.`)
+          fnText.includes(`${workflowName}.`) ||
+          fnText.includes(`we.run(${workflowName}`) ||
+          fnText.includes(`we.run (${workflowName}`) ||
+          fnText.includes(`we.run(
+            ${workflowName}
+          )`)
         ) {
-          workflow = workflowName
+          // workaround for API routes that execute a workflow
+          // by its ID. Not very smart but will do for now.
+          workflow = workflowName.replace(/Id$/, "")
         }
       })
     })

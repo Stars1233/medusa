@@ -3,7 +3,6 @@ description: The shipping option type's details.
 x-schemaName: AdminCreateShippingOptionType
 required:
   - label
-  - description
   - code
 properties:
   label:

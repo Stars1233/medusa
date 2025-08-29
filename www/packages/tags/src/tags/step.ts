@@ -80,6 +80,10 @@ export const step = [
     "path": "https://docs.medusajs.com/resources/references/medusa-workflows/steps/getPromotionCodesToApply"
   },
   {
+    "title": "getVariantPriceSetsStep",
+    "path": "https://docs.medusajs.com/resources/references/medusa-workflows/steps/getVariantPriceSetsStep"
+  },
+  {
     "title": "prepareAdjustmentsFromPromotionActionsStep",
     "path": "https://docs.medusajs.com/resources/references/medusa-workflows/steps/prepareAdjustmentsFromPromotionActionsStep"
   },
@@ -1222,6 +1226,18 @@ export const step = [
   {
     "title": "updateSalesChannelsStep",
     "path": "https://docs.medusajs.com/resources/references/medusa-workflows/steps/updateSalesChannelsStep"
+  },
+  {
+    "title": "createShippingOptionTypesStep",
+    "path": "https://docs.medusajs.com/resources/references/medusa-workflows/steps/createShippingOptionTypesStep"
+  },
+  {
+    "title": "deleteShippingOptionTypesStep",
+    "path": "https://docs.medusajs.com/resources/references/medusa-workflows/steps/deleteShippingOptionTypesStep"
+  },
+  {
+    "title": "updateShippingOptionTypesStep",
+    "path": "https://docs.medusajs.com/resources/references/medusa-workflows/steps/updateShippingOptionTypesStep"
   },
   {
     "title": "deleteShippingProfilesStep",

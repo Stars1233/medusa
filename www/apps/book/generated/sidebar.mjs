@@ -916,6 +916,16 @@ export const generatedSidebars = [
                 "children": [],
                 "chapterTitle": "3.9.1. Execution Number",
                 "number": "3.9.1."
+              },
+              {
+                "loaded": true,
+                "isPathHref": true,
+                "type": "link",
+                "path": "/learn/fundamentals/scheduled-jobs/interval",
+                "title": "Set Interval",
+                "children": [],
+                "chapterTitle": "3.9.2. Set Interval",
+                "number": "3.9.2."
               }
             ],
             "chapterTitle": "3.9. Scheduled Jobs",

@@ -1,12 +1,12 @@
 {
-	"id": 2721,
+	"id": 2725,
 	"name": "currency-models",
 	"variant": "project",
 	"kind": 1,
 	"flags": {},
 	"children": [
 		{
-			"id": 2722,
+			"id": 2726,
 			"name": "Currency",
 			"variant": "declaration",
 			"kind": 32,
@@ -16,7 +16,7 @@
 					"fileName": "currency.ts",
 					"line": 3,
 					"character": 0,
-					"url": "https://github.com/medusajs/medusa/blob/61a25dd07370282cad1dea30e13c3090ebea4f1b/packages/modules/currency/src/models/currency.ts#L3"
+					"url": "https://github.com/medusajs/medusa/blob/9069e9279ee230384cf09c553f60ab6caa0e7012/packages/modules/currency/src/models/currency.ts#L3"
 				}
 			],
 			"type": {
@@ -36,14 +36,14 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 2723,
+									"id": 2727,
 									"name": "__type",
 									"variant": "declaration",
 									"kind": 65536,
 									"flags": {},
 									"children": [
 										{
-											"id": 2724,
+											"id": 2728,
 											"name": "code",
 											"variant": "declaration",
 											"kind": 1024,
@@ -61,7 +61,7 @@
 													"fileName": "currency.ts",
 													"line": 4,
 													"character": 2,
-													"url": "https://github.com/medusajs/medusa/blob/61a25dd07370282cad1dea30e13c3090ebea4f1b/packages/modules/currency/src/models/currency.ts#L4"
+													"url": "https://github.com/medusajs/medusa/blob/9069e9279ee230384cf09c553f60ab6caa0e7012/packages/modules/currency/src/models/currency.ts#L4"
 												}
 											],
 											"type": {
@@ -87,7 +87,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 2725,
+											"id": 2729,
 											"name": "symbol",
 											"variant": "declaration",
 											"kind": 1024,
@@ -105,7 +105,7 @@
 													"fileName": "currency.ts",
 													"line": 5,
 													"character": 2,
-													"url": "https://github.com/medusajs/medusa/blob/61a25dd07370282cad1dea30e13c3090ebea4f1b/packages/modules/currency/src/models/currency.ts#L5"
+													"url": "https://github.com/medusajs/medusa/blob/9069e9279ee230384cf09c553f60ab6caa0e7012/packages/modules/currency/src/models/currency.ts#L5"
 												}
 											],
 											"type": {
@@ -120,7 +120,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 2726,
+											"id": 2730,
 											"name": "symbol_native",
 											"variant": "declaration",
 											"kind": 1024,
@@ -138,7 +138,7 @@
 													"fileName": "currency.ts",
 													"line": 6,
 													"character": 2,
-													"url": "https://github.com/medusajs/medusa/blob/61a25dd07370282cad1dea30e13c3090ebea4f1b/packages/modules/currency/src/models/currency.ts#L6"
+													"url": "https://github.com/medusajs/medusa/blob/9069e9279ee230384cf09c553f60ab6caa0e7012/packages/modules/currency/src/models/currency.ts#L6"
 												}
 											],
 											"type": {
@@ -153,7 +153,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 2727,
+											"id": 2731,
 											"name": "name",
 											"variant": "declaration",
 											"kind": 1024,
@@ -171,7 +171,7 @@
 													"fileName": "currency.ts",
 													"line": 7,
 													"character": 2,
-													"url": "https://github.com/medusajs/medusa/blob/61a25dd07370282cad1dea30e13c3090ebea4f1b/packages/modules/currency/src/models/currency.ts#L7"
+													"url": "https://github.com/medusajs/medusa/blob/9069e9279ee230384cf09c553f60ab6caa0e7012/packages/modules/currency/src/models/currency.ts#L7"
 												}
 											],
 											"type": {
@@ -186,7 +186,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 2728,
+											"id": 2732,
 											"name": "decimal_digits",
 											"variant": "declaration",
 											"kind": 1024,
@@ -204,7 +204,7 @@
 													"fileName": "currency.ts",
 													"line": 8,
 													"character": 2,
-													"url": "https://github.com/medusajs/medusa/blob/61a25dd07370282cad1dea30e13c3090ebea4f1b/packages/modules/currency/src/models/currency.ts#L8"
+													"url": "https://github.com/medusajs/medusa/blob/9069e9279ee230384cf09c553f60ab6caa0e7012/packages/modules/currency/src/models/currency.ts#L8"
 												}
 											],
 											"type": {
@@ -219,7 +219,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 2729,
+											"id": 2733,
 											"name": "rounding",
 											"variant": "declaration",
 											"kind": 1024,
@@ -237,7 +237,7 @@
 													"fileName": "currency.ts",
 													"line": 9,
 													"character": 2,
-													"url": "https://github.com/medusajs/medusa/blob/61a25dd07370282cad1dea30e13c3090ebea4f1b/packages/modules/currency/src/models/currency.ts#L9"
+													"url": "https://github.com/medusajs/medusa/blob/9069e9279ee230384cf09c553f60ab6caa0e7012/packages/modules/currency/src/models/currency.ts#L9"
 												}
 											],
 											"type": {
@@ -256,12 +256,12 @@
 										{
 											"title": "Properties",
 											"children": [
-												2724,
-												2725,
-												2726,
-												2727,
 												2728,
-												2729
+												2729,
+												2730,
+												2731,
+												2732,
+												2733
 											]
 										}
 									],
@@ -270,7 +270,7 @@
 											"fileName": "currency.ts",
 											"line": 3,
 											"character": 40,
-											"url": "https://github.com/medusajs/medusa/blob/61a25dd07370282cad1dea30e13c3090ebea4f1b/packages/modules/currency/src/models/currency.ts#L3"
+											"url": "https://github.com/medusajs/medusa/blob/9069e9279ee230384cf09c553f60ab6caa0e7012/packages/modules/currency/src/models/currency.ts#L3"
 										}
 									]
 								}
@@ -293,45 +293,45 @@
 		{
 			"title": "Variables",
 			"children": [
-				2722
+				2726
 			]
 		}
 	],
 	"packageName": "@medusajs/currency",
 	"symbolIdMap": {
-		"2721": {
+		"2725": {
 			"sourceFileName": "../../../../packages/modules/currency/src/models/index.ts",
 			"qualifiedName": ""
 		},
-		"2722": {
+		"2726": {
 			"sourceFileName": "../../../../packages/modules/currency/src/models/currency.ts",
 			"qualifiedName": "default"
 		},
-		"2723": {
+		"2727": {
 			"sourceFileName": "../../../../packages/modules/currency/src/models/currency.ts",
 			"qualifiedName": "__object"
 		},
-		"2724": {
+		"2728": {
 			"sourceFileName": "../../../../packages/modules/currency/src/models/currency.ts",
 			"qualifiedName": "__object.code"
 		},
-		"2725": {
+		"2729": {
 			"sourceFileName": "../../../../packages/modules/currency/src/models/currency.ts",
 			"qualifiedName": "__object.symbol"
 		},
-		"2726": {
+		"2730": {
 			"sourceFileName": "../../../../packages/modules/currency/src/models/currency.ts",
 			"qualifiedName": "__object.symbol_native"
 		},
-		"2727": {
+		"2731": {
 			"sourceFileName": "../../../../packages/modules/currency/src/models/currency.ts",
 			"qualifiedName": "__object.name"
 		},
-		"2728": {
+		"2732": {
 			"sourceFileName": "../../../../packages/modules/currency/src/models/currency.ts",
 			"qualifiedName": "__object.decimal_digits"
 		},
-		"2729": {
+		"2733": {
 			"sourceFileName": "../../../../packages/modules/currency/src/models/currency.ts",
 			"qualifiedName": "__object.rounding"
 		}
@@ -341,7 +341,7 @@
 			"1": "../../../../packages/modules/currency/src/models/index.ts"
 		},
 		"reflections": {
-			"1": 2721
+			"1": 2725
 		}
 	}
 }

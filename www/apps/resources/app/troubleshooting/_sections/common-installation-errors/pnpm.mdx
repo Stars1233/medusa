@@ -1,0 +1,23 @@
+If you use `pnpm` as a package manager in your Medusa application, you might face errors about missing packages. For example:
+
+```bash
+can't resolve @medusajs/dashboard
+```
+
+## Why This Error Occurred
+
+Medusa doesn't officially support `pnpm` as a package manager, which may lead to unexpected errors, including issues with package resolution.
+
+---
+
+## How to Fix it
+
+To resolve this error and other potential errors, consider switching to `yarn` as your package manager.
+
+If you still want to use `pnpm`, you must manually install the following packages in your project:
+
+```bash
+pnpm add @medusajs/dashboard @medusajs/icons @meduasjs/types @medusajs/draft-order @medusajs/ui
+```
+
+Make sure to also update these packages whenever you update your Medusa application.

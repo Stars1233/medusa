@@ -3,7 +3,7 @@ slug: /references/medusa-workflows/beginOrderEditOrderWorkflow
 sidebar_label: beginOrderEditOrderWorkflow
 sidebar_description: Create an order edit request.
 tags:
-  - remote query
+  - query
   - order
   - workflow
 ---
@@ -17,13 +17,13 @@ This documentation provides a reference to the `beginOrderEditOrderWorkflow`. It
 This workflow creates an order edit request. It' used by the
 [Create Order Edit Admin API Route](https://docs.medusajs.com/api/admin#order-edits\_postorderedits).
 
-To request the order edit, use the [requestOrderEditRequestWorkflow](../core_flows.Order.Workflows_Order.requestOrderEditRequestWorkflow/page.mdx). The order edit is then only applied after the 
+To request the order edit, use the [requestOrderEditRequestWorkflow](../core_flows.Order.Workflows_Order.requestOrderEditRequestWorkflow/page.mdx). The order edit is then only applied after the
 order edit is confirmed using the [confirmOrderEditRequestWorkflow](../core_flows.Order.Workflows_Order.confirmOrderEditRequestWorkflow/page.mdx).
 
 You can use this workflow within your customizations or your own custom workflows, allowing you to create an order edit
 for an order in your custom flows.
 
-<SourceCodeLink link="https://github.com/medusajs/medusa/blob/61a25dd07370282cad1dea30e13c3090ebea4f1b/packages/core/core-flows/src/order/workflows/order-edit/begin-order-edit.ts#L76" />
+<SourceCodeLink link="https://github.com/medusajs/medusa/blob/9069e9279ee230384cf09c553f60ab6caa0e7012/packages/core/core-flows/src/order/workflows/order-edit/begin-order-edit.ts#L77" />
 
 ## Examples
 
@@ -132,7 +132,7 @@ const myWorkflow = createWorkflow(
 
 ## Steps
 
-<WorkflowDiagram workflow={{"name":"beginOrderEditOrderWorkflow","steps":[{"type":"step","name":"useRemoteQueryStep","description":"This step fetches data across modules using the remote query.\n\nLearn more in the [Remote Query documentation](https://docs.medusajs.com/learn/fundamentals/module-links/query).\n\n:::note\n\nThis step is deprecated. Use [useQueryGraphStep](../../../../Common/Steps_Common/functions/core_flows.Common.Steps_Common.useQueryGraphStep/page.mdx) instead.\n\n:::","link":"../../../../Common/Steps_Common/functions/core_flows.Common.Steps_Common.useRemoteQueryStep/page.mdx","depth":1},{"type":"step","name":"beginOrderEditValidationStep","description":"This step validates that an order-edit can be requested for an order.\nIf the order is canceled, the step will throw an error.\n\n:::note\n\nYou can retrieve an order's details using [Query](https://docs.medusajs.com/learn/fundamentals/module-links/query),\nor [useQueryGraphStep](https://docs.medusajs.com/resources/references/medusa-workflows/steps/useQueryGraphStep).\n\n:::","link":"../core_flows.Order.Workflows_Order.beginOrderEditValidationStep/page.mdx","depth":2},{"type":"step","name":"createOrderChangeStep","description":"This step creates an order change.","link":"../../../Steps_Order/functions/core_flows.Order.Steps_Order.createOrderChangeStep/page.mdx","depth":3}]}} />
+<WorkflowDiagram workflow={{"name":"beginOrderEditOrderWorkflow","steps":[{"type":"step","name":"useQueryGraphStep","description":"This step fetches data across modules using the Query.\n\nLearn more in the [Query documentation](https://docs.medusajs.com/learn/fundamentals/module-links/query).","link":"../../../../Common/Steps_Common/functions/core_flows.Common.Steps_Common.useQueryGraphStep/page.mdx","depth":1},{"type":"step","name":"beginOrderEditValidationStep","description":"This step validates that an order-edit can be requested for an order.\nIf the order is canceled, the step will throw an error.\n\n:::note\n\nYou can retrieve an order's details using [Query](https://docs.medusajs.com/learn/fundamentals/module-links/query),\nor [useQueryGraphStep](https://docs.medusajs.com/resources/references/medusa-workflows/steps/useQueryGraphStep).\n\n:::","link":"../core_flows.Order.Workflows_Order.beginOrderEditValidationStep/page.mdx","depth":2},{"type":"step","name":"createOrderChangeStep","description":"This step creates an order change.","link":"../../../Steps_Order/functions/core_flows.Order.Steps_Order.createOrderChangeStep/page.mdx","depth":3}]}} />
 
 ## Input
 

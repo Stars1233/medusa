@@ -663,6 +663,15 @@ const generatedgeneratedToolsSidebarSidebar = {
                   "loaded": true,
                   "isPathHref": true,
                   "type": "link",
+                  "path": "/references/js-sdk/admin/shippingOptionType",
+                  "title": "shippingOptionType",
+                  "description": "",
+                  "children": []
+                },
+                {
+                  "loaded": true,
+                  "isPathHref": true,
+                  "type": "link",
                   "path": "/references/js-sdk/admin/shippingProfile",
                   "title": "shippingProfile",
                   "description": "",

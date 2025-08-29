@@ -4,7 +4,6 @@
  * summary: List Feature Flags
  * description: Retrieve a list of feature flags. The feature flags can be filtered by fields such as `id`. The feature flags can also be sorted or paginated.
  * x-authenticated: false
- * parameters: []
  * x-codeSamples:
  *   - lang: Shell
  *     label: cURL

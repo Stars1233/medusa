@@ -2140,6 +2140,11 @@ export const slugChanges = [
     "filePath": "/www/apps/resources/references/core_flows/Order/Workflows_Order/functions/core_flows.Order.Workflows_Order.getOrdersListWorkflow/page.mdx"
   },
   {
+    "origSlug": "/references/core_flows/Order/Workflows_Order/functions/core_flows.Order.Workflows_Order.listShippingOptionsForOrderWorkflow",
+    "newSlug": "/references/medusa-workflows/listShippingOptionsForOrderWorkflow",
+    "filePath": "/www/apps/resources/references/core_flows/Order/Workflows_Order/functions/core_flows.Order.Workflows_Order.listShippingOptionsForOrderWorkflow/page.mdx"
+  },
+  {
     "origSlug": "/references/core_flows/Order/Workflows_Order/functions/core_flows.Order.Workflows_Order.markOrderFulfillmentAsDeliveredWorkflow",
     "newSlug": "/references/medusa-workflows/markOrderFulfillmentAsDeliveredWorkflow",
     "filePath": "/www/apps/resources/references/core_flows/Order/Workflows_Order/functions/core_flows.Order.Workflows_Order.markOrderFulfillmentAsDeliveredWorkflow/page.mdx"
@@ -3380,9 +3385,64 @@ export const slugChanges = [
     "filePath": "/www/apps/resources/references/core_flows/Sales_Channel/Workflows_Sales_Channel/functions/core_flows.Sales_Channel.Workflows_Sales_Channel.updateSalesChannelsWorkflow/page.mdx"
   },
   {
+    "origSlug": "/references/core_flows/Settings/Steps_Settings/functions/core_flows.Settings.Steps_Settings.createViewConfigurationStep",
+    "newSlug": "/references/medusa-workflows/steps/createViewConfigurationStep",
+    "filePath": "/www/apps/resources/references/core_flows/Settings/Steps_Settings/functions/core_flows.Settings.Steps_Settings.createViewConfigurationStep/page.mdx"
+  },
+  {
+    "origSlug": "/references/core_flows/Settings/Steps_Settings/functions/core_flows.Settings.Steps_Settings.setActiveViewConfigurationStep",
+    "newSlug": "/references/medusa-workflows/steps/setActiveViewConfigurationStep",
+    "filePath": "/www/apps/resources/references/core_flows/Settings/Steps_Settings/functions/core_flows.Settings.Steps_Settings.setActiveViewConfigurationStep/page.mdx"
+  },
+  {
+    "origSlug": "/references/core_flows/Settings/Steps_Settings/functions/core_flows.Settings.Steps_Settings.updateViewConfigurationStep",
+    "newSlug": "/references/medusa-workflows/steps/updateViewConfigurationStep",
+    "filePath": "/www/apps/resources/references/core_flows/Settings/Steps_Settings/functions/core_flows.Settings.Steps_Settings.updateViewConfigurationStep/page.mdx"
+  },
+  {
+    "origSlug": "/references/core_flows/Settings/Workflows_Settings/functions/core_flows.Settings.Workflows_Settings.createViewConfigurationWorkflow",
+    "newSlug": "/references/medusa-workflows/createViewConfigurationWorkflow",
+    "filePath": "/www/apps/resources/references/core_flows/Settings/Workflows_Settings/functions/core_flows.Settings.Workflows_Settings.createViewConfigurationWorkflow/page.mdx"
+  },
+  {
+    "origSlug": "/references/core_flows/Settings/Workflows_Settings/functions/core_flows.Settings.Workflows_Settings.updateViewConfigurationWorkflow",
+    "newSlug": "/references/medusa-workflows/updateViewConfigurationWorkflow",
+    "filePath": "/www/apps/resources/references/core_flows/Settings/Workflows_Settings/functions/core_flows.Settings.Workflows_Settings.updateViewConfigurationWorkflow/page.mdx"
+  },
+  {
+    "origSlug": "/references/core_flows/Shipping_Options/Steps_Shipping_Options/functions/core_flows.Shipping_Options.Steps_Shipping_Options.createShippingOptionTypesStep",
+    "newSlug": "/references/medusa-workflows/steps/createShippingOptionTypesStep",
+    "filePath": "/www/apps/resources/references/core_flows/Shipping_Options/Steps_Shipping_Options/functions/core_flows.Shipping_Options.Steps_Shipping_Options.createShippingOptionTypesStep/page.mdx"
+  },
+  {
+    "origSlug": "/references/core_flows/Shipping_Options/Steps_Shipping_Options/functions/core_flows.Shipping_Options.Steps_Shipping_Options.deleteShippingOptionTypesStep",
+    "newSlug": "/references/medusa-workflows/steps/deleteShippingOptionTypesStep",
+    "filePath": "/www/apps/resources/references/core_flows/Shipping_Options/Steps_Shipping_Options/functions/core_flows.Shipping_Options.Steps_Shipping_Options.deleteShippingOptionTypesStep/page.mdx"
+  },
+  {
     "origSlug": "/references/core_flows/Shipping_Options/Steps_Shipping_Options/functions/core_flows.Shipping_Options.Steps_Shipping_Options.listShippingOptionsForContextStep",
     "newSlug": "/references/medusa-workflows/steps/listShippingOptionsForContextStep",
     "filePath": "/www/apps/resources/references/core_flows/Shipping_Options/Steps_Shipping_Options/functions/core_flows.Shipping_Options.Steps_Shipping_Options.listShippingOptionsForContextStep/page.mdx"
+  },
+  {
+    "origSlug": "/references/core_flows/Shipping_Options/Steps_Shipping_Options/functions/core_flows.Shipping_Options.Steps_Shipping_Options.updateShippingOptionTypesStep",
+    "newSlug": "/references/medusa-workflows/steps/updateShippingOptionTypesStep",
+    "filePath": "/www/apps/resources/references/core_flows/Shipping_Options/Steps_Shipping_Options/functions/core_flows.Shipping_Options.Steps_Shipping_Options.updateShippingOptionTypesStep/page.mdx"
+  },
+  {
+    "origSlug": "/references/core_flows/Shipping_Options/Workflows_Shipping_Options/functions/core_flows.Shipping_Options.Workflows_Shipping_Options.createShippingOptionTypesWorkflow",
+    "newSlug": "/references/medusa-workflows/createShippingOptionTypesWorkflow",
+    "filePath": "/www/apps/resources/references/core_flows/Shipping_Options/Workflows_Shipping_Options/functions/core_flows.Shipping_Options.Workflows_Shipping_Options.createShippingOptionTypesWorkflow/page.mdx"
+  },
+  {
+    "origSlug": "/references/core_flows/Shipping_Options/Workflows_Shipping_Options/functions/core_flows.Shipping_Options.Workflows_Shipping_Options.deleteShippingOptionTypesWorkflow",
+    "newSlug": "/references/medusa-workflows/deleteShippingOptionTypesWorkflow",
+    "filePath": "/www/apps/resources/references/core_flows/Shipping_Options/Workflows_Shipping_Options/functions/core_flows.Shipping_Options.Workflows_Shipping_Options.deleteShippingOptionTypesWorkflow/page.mdx"
+  },
+  {
+    "origSlug": "/references/core_flows/Shipping_Options/Workflows_Shipping_Options/functions/core_flows.Shipping_Options.Workflows_Shipping_Options.updateShippingOptionTypesWorkflow",
+    "newSlug": "/references/medusa-workflows/updateShippingOptionTypesWorkflow",
+    "filePath": "/www/apps/resources/references/core_flows/Shipping_Options/Workflows_Shipping_Options/functions/core_flows.Shipping_Options.Workflows_Shipping_Options.updateShippingOptionTypesWorkflow/page.mdx"
   },
   {
     "origSlug": "/references/core_flows/Shipping_Profile/Steps_Shipping_Profile/functions/core_flows.Shipping_Profile.Steps_Shipping_Profile.deleteShippingProfilesStep",
@@ -3970,6 +4030,11 @@ export const slugChanges = [
     "filePath": "/www/apps/resources/references/fulfillment/IFulfillmentModuleService/methods/fulfillment.IFulfillmentModuleService.createShippingOptionRules/page.mdx"
   },
   {
+    "origSlug": "/references/fulfillment/IFulfillmentModuleService/methods/fulfillment.IFulfillmentModuleService.createShippingOptionTypes",
+    "newSlug": "/references/fulfillment/createShippingOptionTypes",
+    "filePath": "/www/apps/resources/references/fulfillment/IFulfillmentModuleService/methods/fulfillment.IFulfillmentModuleService.createShippingOptionTypes/page.mdx"
+  },
+  {
     "origSlug": "/references/fulfillment/IFulfillmentModuleService/methods/fulfillment.IFulfillmentModuleService.createShippingOptions",
     "newSlug": "/references/fulfillment/createShippingOptions",
     "filePath": "/www/apps/resources/references/fulfillment/IFulfillmentModuleService/methods/fulfillment.IFulfillmentModuleService.createShippingOptions/page.mdx"
@@ -4125,6 +4190,11 @@ export const slugChanges = [
     "filePath": "/www/apps/resources/references/fulfillment/IFulfillmentModuleService/methods/fulfillment.IFulfillmentModuleService.restoreServiceZones/page.mdx"
   },
   {
+    "origSlug": "/references/fulfillment/IFulfillmentModuleService/methods/fulfillment.IFulfillmentModuleService.restoreShippingOptionTypes",
+    "newSlug": "/references/fulfillment/restoreShippingOptionTypes",
+    "filePath": "/www/apps/resources/references/fulfillment/IFulfillmentModuleService/methods/fulfillment.IFulfillmentModuleService.restoreShippingOptionTypes/page.mdx"
+  },
+  {
     "origSlug": "/references/fulfillment/IFulfillmentModuleService/methods/fulfillment.IFulfillmentModuleService.restoreShippingOptions",
     "newSlug": "/references/fulfillment/restoreShippingOptions",
     "filePath": "/www/apps/resources/references/fulfillment/IFulfillmentModuleService/methods/fulfillment.IFulfillmentModuleService.restoreShippingOptions/page.mdx"
@@ -4195,6 +4265,11 @@ export const slugChanges = [
     "filePath": "/www/apps/resources/references/fulfillment/IFulfillmentModuleService/methods/fulfillment.IFulfillmentModuleService.softDeleteServiceZones/page.mdx"
   },
   {
+    "origSlug": "/references/fulfillment/IFulfillmentModuleService/methods/fulfillment.IFulfillmentModuleService.softDeleteShippingOptionTypes",
+    "newSlug": "/references/fulfillment/softDeleteShippingOptionTypes",
+    "filePath": "/www/apps/resources/references/fulfillment/IFulfillmentModuleService/methods/fulfillment.IFulfillmentModuleService.softDeleteShippingOptionTypes/page.mdx"
+  },
+  {
     "origSlug": "/references/fulfillment/IFulfillmentModuleService/methods/fulfillment.IFulfillmentModuleService.softDeleteShippingOptions",
     "newSlug": "/references/fulfillment/softDeleteShippingOptions",
     "filePath": "/www/apps/resources/references/fulfillment/IFulfillmentModuleService/methods/fulfillment.IFulfillmentModuleService.softDeleteShippingOptions/page.mdx"
@@ -4230,6 +4305,11 @@ export const slugChanges = [
     "filePath": "/www/apps/resources/references/fulfillment/IFulfillmentModuleService/methods/fulfillment.IFulfillmentModuleService.updateShippingOptionRules/page.mdx"
   },
   {
+    "origSlug": "/references/fulfillment/IFulfillmentModuleService/methods/fulfillment.IFulfillmentModuleService.updateShippingOptionTypes",
+    "newSlug": "/references/fulfillment/updateShippingOptionTypes",
+    "filePath": "/www/apps/resources/references/fulfillment/IFulfillmentModuleService/methods/fulfillment.IFulfillmentModuleService.updateShippingOptionTypes/page.mdx"
+  },
+  {
     "origSlug": "/references/fulfillment/IFulfillmentModuleService/methods/fulfillment.IFulfillmentModuleService.updateShippingOptions",
     "newSlug": "/references/fulfillment/updateShippingOptions",
     "filePath": "/www/apps/resources/references/fulfillment/IFulfillmentModuleService/methods/fulfillment.IFulfillmentModuleService.updateShippingOptions/page.mdx"
@@ -4243,6 +4323,11 @@ export const slugChanges = [
     "origSlug": "/references/fulfillment/IFulfillmentModuleService/methods/fulfillment.IFulfillmentModuleService.upsertServiceZones",
     "newSlug": "/references/fulfillment/upsertServiceZones",
     "filePath": "/www/apps/resources/references/fulfillment/IFulfillmentModuleService/methods/fulfillment.IFulfillmentModuleService.upsertServiceZones/page.mdx"
+  },
+  {
+    "origSlug": "/references/fulfillment/IFulfillmentModuleService/methods/fulfillment.IFulfillmentModuleService.upsertShippingOptionTypes",
+    "newSlug": "/references/fulfillment/upsertShippingOptionTypes",
+    "filePath": "/www/apps/resources/references/fulfillment/IFulfillmentModuleService/methods/fulfillment.IFulfillmentModuleService.upsertShippingOptionTypes/page.mdx"
   },
   {
     "origSlug": "/references/fulfillment/IFulfillmentModuleService/methods/fulfillment.IFulfillmentModuleService.upsertShippingOptions",
@@ -4773,6 +4858,11 @@ export const slugChanges = [
     "origSlug": "/references/js_sdk/admin/Admin/properties/js_sdk.admin.Admin.shippingOption",
     "newSlug": "/references/js-sdk/admin/shippingOption",
     "filePath": "/www/apps/resources/references/js_sdk/admin/Admin/properties/js_sdk.admin.Admin.shippingOption/page.mdx"
+  },
+  {
+    "origSlug": "/references/js_sdk/admin/Admin/properties/js_sdk.admin.Admin.shippingOptionType",
+    "newSlug": "/references/js-sdk/admin/shippingOptionType",
+    "filePath": "/www/apps/resources/references/js_sdk/admin/Admin/properties/js_sdk.admin.Admin.shippingOptionType/page.mdx"
   },
   {
     "origSlug": "/references/js_sdk/admin/Admin/properties/js_sdk.admin.Admin.shippingProfile",

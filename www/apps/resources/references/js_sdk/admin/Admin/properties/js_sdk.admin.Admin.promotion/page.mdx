@@ -15,7 +15,7 @@ This documentation provides a reference to the `sdk.admin.promotion` set of meth
 
 ## retrieve
 
-This method retrieves a promotion by its ID. It sends a request to the 
+This method retrieves a promotion by its ID. It sends a request to the
 [Retrieve Promotion](https://docs.medusajs.com/api/admin#promotions\_getpromotionsid)
 API route.
 
@@ -55,7 +55,7 @@ ___
 
 ## list
 
-This method retrieves a list of promotions. It sends a request to the 
+This method retrieves a list of promotions. It sends a request to the
 [List Promotions](https://docs.medusajs.com/api/admin#promotions\_getpromotions)
 API route.
 
@@ -110,14 +110,14 @@ ___
 
 ## create
 
-This method creates a new promotion. It sends a request to the 
+This method creates a new promotion. It sends a request to the
 [Create Promotion](https://docs.medusajs.com/api/admin#promotions\_postpromotions)
 API route.
 
 ### Example
 
 ```ts
-sdk.admin.promotion.create({ 
+sdk.admin.promotion.create({
   name: "My Promotion",
   description: "This is a test promotion",
   code: "PROMO123",
@@ -141,7 +141,7 @@ ___
 
 ## update
 
-This method updates a promotion. It sends a request to the 
+This method updates a promotion. It sends a request to the
 [Update Promotion](https://docs.medusajs.com/api/admin#promotions\_postpromotionsid)
 API route.
 
@@ -168,7 +168,7 @@ ___
 
 ## delete
 
-This method deletes a promotion. It sends a request to the 
+This method deletes a promotion. It sends a request to the
 [Delete Promotion](https://docs.medusajs.com/api/admin#promotions\_deletepromotionsid)
 API route.
 
@@ -197,11 +197,11 @@ This method creates and adds rules to a promotion. It can be the promotion's rul
 or its application method's buy or target rules. That depends on the rule type
 you specify as a parameter.
 
-- If you set the `ruleType` to `rules`, the method sends a request to the 
+- If you set the `ruleType` to `rules`, the method sends a request to the
 [Manage Promotion's Rules API Route](https://docs.medusajs.com/api/admin#promotions\_postpromotionsidrulesbatch).
-- If you set the `ruleType` to `buy-rules`, the method sends a request to the 
+- If you set the `ruleType` to `buy-rules`, the method sends a request to the
 [Manage Promotion's Buy Rules API Route](https://docs.medusajs.com/api/admin#promotions\_postpromotionsidbuyrulesbatch).
-- If you set the `ruleType` to `target-rules`, the method sends a request to the 
+- If you set the `ruleType` to `target-rules`, the method sends a request to the
 [Manage Promotion's Target Rules API Route](https://docs.medusajs.com/api/admin#promotions\_postpromotionsidtargetrulesbatch).
 
 ### Example
@@ -237,11 +237,11 @@ This method updates the rules of a promotion. It can be the promotion's rules,
 or its application method's buy or target rules. That depends on the rule type
 you specify as a parameter.
 
-- If you set the `ruleType` to `rules`, the method sends a request to the 
+- If you set the `ruleType` to `rules`, the method sends a request to the
 [Manage Promotion's Rules API Route](https://docs.medusajs.com/api/admin#promotions\_postpromotionsidrulesbatch).
-- If you set the `ruleType` to `buy-rules`, the method sends a request to the 
+- If you set the `ruleType` to `buy-rules`, the method sends a request to the
 [Manage Promotion's Buy Rules API Route](https://docs.medusajs.com/api/admin#promotions\_postpromotionsidbuyrulesbatch).
-- If you set the `ruleType` to `target-rules`, the method sends a request to the 
+- If you set the `ruleType` to `target-rules`, the method sends a request to the
 [Manage Promotion's Target Rules API Route](https://docs.medusajs.com/api/admin#promotions\_postpromotionsidtargetrulesbatch).
 
 ### Example
@@ -276,11 +276,11 @@ This method removes rules from a promotion. It can be the promotion's rules,
 or its application method's buy or target rules. That depends on the rule type
 you specify as a parameter.
 
-- If you set the `ruleType` to `rules`, the method sends a request to the 
+- If you set the `ruleType` to `rules`, the method sends a request to the
 [Manage Promotion's Rules API Route](https://docs.medusajs.com/api/admin#promotions\_postpromotionsidrulesbatch).
-- If you set the `ruleType` to `buy-rules`, the method sends a request to the 
+- If you set the `ruleType` to `buy-rules`, the method sends a request to the
 [Manage Promotion's Buy Rules API Route](https://docs.medusajs.com/api/admin#promotions\_postpromotionsidbuyrulesbatch).
-- If you set the `ruleType` to `target-rules`, the method sends a request to the 
+- If you set the `ruleType` to `target-rules`, the method sends a request to the
 [Manage Promotion's Target Rules API Route](https://docs.medusajs.com/api/admin#promotions\_postpromotionsidtargetrulesbatch).
 
 ### Example
@@ -324,7 +324,7 @@ sdk.admin.promotion.listRules("promo_123", "rules")
 
 ### Parameters
 
-<TypeList types={[{"name":"id","type":"`null` \\| `string`","description":"The promotion's ID.","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"ruleType","type":"`string`","description":"The type of rules to retrieve. Can be `rules`, `buy-rules`, or `target-rules`.","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"query","type":"[AdminGetPromotionRuleParams](../../../../../types/HttpTypes/interfaces/types.HttpTypes.AdminGetPromotionRuleParams/page.mdx)","description":"Configure the fields to retrieve in the rules.","optional":true,"defaultValue":"","expandable":false,"children":[{"name":"promotion_type","type":"`string`","description":"","optional":true,"defaultValue":"","expandable":false,"children":[]},{"name":"application_method_type","type":"`string`","description":"","optional":true,"defaultValue":"","expandable":false,"children":[]}]},{"name":"headers","type":"[ClientHeaders](../../../types/js_sdk.admin.ClientHeaders/page.mdx)","description":"Headers to pass in the request.","optional":true,"defaultValue":"","expandable":false,"children":[{"name":"tags","type":"`string`[]","description":"Tags to cache data under for Next.js applications.\n\nLearn more in [Next.js's documentation](https://nextjs.org/docs/app/building-your-application/caching#fetch-optionsnexttags-and-revalidatetag).","optional":false,"defaultValue":"","expandable":false,"children":[]}]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="listRules"/>
+<TypeList types={[{"name":"id","type":"`null` \\| `string`","description":"The promotion's ID.","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"ruleType","type":"`string`","description":"The type of rules to retrieve. Can be `rules`, `buy-rules`, or `target-rules`.","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"query","type":"[AdminGetPromotionRuleParams](../../../../../types/HttpTypes/interfaces/types.HttpTypes.AdminGetPromotionRuleParams/page.mdx)","description":"Configure the fields to retrieve in the rules.","optional":true,"defaultValue":"","expandable":false,"children":[{"name":"promotion_type","type":"[PromotionTypeValues](../../../../../promotion/types/promotion.PromotionTypeValues/page.mdx)","description":"The type of promotion to retrieve the attributes for.","optional":true,"defaultValue":"","expandable":false,"children":[]},{"name":"application_method_type","type":"[ApplicationMethodTypeValues](../../../../../promotion/types/promotion.ApplicationMethodTypeValues/page.mdx)","description":"The type of application method to retrieve the attributes for.","optional":true,"defaultValue":"","expandable":false,"children":[]},{"name":"application_method_target_type","type":"[ApplicationMethodTargetTypeValues](../../../../../promotion/types/promotion.ApplicationMethodTargetTypeValues/page.mdx)","description":"The type of application method to retrieve the attributes for.","optional":true,"defaultValue":"","expandable":false,"children":[]}]},{"name":"headers","type":"[ClientHeaders](../../../types/js_sdk.admin.ClientHeaders/page.mdx)","description":"Headers to pass in the request.","optional":true,"defaultValue":"","expandable":false,"children":[{"name":"tags","type":"`string`[]","description":"Tags to cache data under for Next.js applications.\n\nLearn more in [Next.js's documentation](https://nextjs.org/docs/app/building-your-application/caching#fetch-optionsnexttags-and-revalidatetag).","optional":false,"defaultValue":"","expandable":false,"children":[]}]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="listRules"/>
 
 ### Returns
 
@@ -354,7 +354,7 @@ sdk.admin.promotion.listRuleAttributes("rules", "standard")
 
 ### Parameters
 
-<TypeList types={[{"name":"ruleType","type":"`string`","description":"The type of rules to retrieve the attributes for. Can be `rules`, `buy-rules`, or `target-rules`.","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"promotionType","type":"`string`","description":"The type of promotion to retrieve the attributes for. It can be `standard` or `buyget`.","optional":true,"defaultValue":"","expandable":false,"children":[]},{"name":"headers","type":"[ClientHeaders](../../../types/js_sdk.admin.ClientHeaders/page.mdx)","description":"Headers to pass in the request.","optional":true,"defaultValue":"","expandable":false,"children":[{"name":"tags","type":"`string`[]","description":"Tags to cache data under for Next.js applications.\n\nLearn more in [Next.js's documentation](https://nextjs.org/docs/app/building-your-application/caching#fetch-optionsnexttags-and-revalidatetag).","optional":false,"defaultValue":"","expandable":false,"children":[]}]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="listRuleAttributes"/>
+<TypeList types={[{"name":"ruleType","type":"`string`","description":"The type of rules to retrieve the attributes for. Can be `rules`, `buy-rules`, or `target-rules`.","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"promotionType","type":"`string`","description":"The type of promotion to retrieve the attributes for. It can be `standard` or `buyget`.","optional":true,"defaultValue":"","expandable":false,"children":[]},{"name":"applicationMethodTargetType","type":"`string`","description":"The type of application method to retrieve the attributes for. It can be `order`, `items` (default) or `shipping_methods`.","optional":true,"defaultValue":"","expandable":false,"children":[]},{"name":"headers","type":"[ClientHeaders](../../../types/js_sdk.admin.ClientHeaders/page.mdx)","description":"Headers to pass in the request.","optional":true,"defaultValue":"","expandable":false,"children":[{"name":"tags","type":"`string`[]","description":"Tags to cache data under for Next.js applications.\n\nLearn more in [Next.js's documentation](https://nextjs.org/docs/app/building-your-application/caching#fetch-optionsnexttags-and-revalidatetag).","optional":false,"defaultValue":"","expandable":false,"children":[]}]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="listRuleAttributes"/>
 
 ### Returns
 
@@ -364,10 +364,10 @@ ___
 
 ## listRuleValues
 
-Retrieve all potential values for promotion rules and target and buy rules based on the specified rule attribute and type. 
-For example, if you provide the ID of the `currency_code` rule attribute, and set `rule_type` to rules, 
+Retrieve all potential values for promotion rules and target and buy rules based on the specified rule attribute and type.
+For example, if you provide the ID of the `currency_code` rule attribute, and set `rule_type` to rules,
 a list of currencies are retrieved in label-value pairs.
- 
+
 This method sends a request to the
 [List Rule Values API Route](https://docs.medusajs.com/api/admin#promotions\_getpromotionsrulevalueoptionsrule\_typerule\_attribute\_id)
 
@@ -382,7 +382,7 @@ sdk.admin.promotion.listRuleValues("rules", "attr_123")
 
 ### Parameters
 
-<TypeList types={[{"name":"ruleType","type":"`string`","description":"The type of rules to retrieve the values for. Can be `rules`, `buy-rules`, or `target-rules`.","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"ruleValue","type":"`string`","description":"The ID of the rule attribute to retrieve the values for.","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"query","type":"[AdminGetPromotionsRuleValueParams](../../../../../types/HttpTypes/interfaces/types.HttpTypes.AdminGetPromotionsRuleValueParams/page.mdx)","description":"Configure the fields to retrieve in the rule values.","optional":true,"defaultValue":"","expandable":false,"children":[{"name":"fields","type":"`string`","description":"The fields and relations to retrieve separated by commas.\n\nLearn more in the [API reference](https://docs.medusajs.com/api/store#select-fields-and-relations).","optional":true,"defaultValue":"","expandable":false,"children":[]},{"name":"limit","type":"`number`","description":"The maximum number of items to retrieve.","optional":true,"defaultValue":"","expandable":false,"children":[]},{"name":"offset","type":"`number`","description":"The number of items to skip before retrieving the returned items.","optional":true,"defaultValue":"","expandable":false,"children":[]},{"name":"order","type":"`string`","description":"The field to sort by and in which order.","optional":true,"defaultValue":"","expandable":false,"children":[]},{"name":"q","type":"`string`","description":"Search for a rule value by its searchable","optional":true,"defaultValue":"","expandable":false,"children":[]},{"name":"value","type":"`string` \\| `string`[]","description":"Filter by rule value.","optional":true,"defaultValue":"","expandable":false,"children":[]}]},{"name":"headers","type":"[ClientHeaders](../../../types/js_sdk.admin.ClientHeaders/page.mdx)","description":"Headers to pass in the request.","optional":true,"defaultValue":"","expandable":false,"children":[{"name":"tags","type":"`string`[]","description":"Tags to cache data under for Next.js applications.\n\nLearn more in [Next.js's documentation](https://nextjs.org/docs/app/building-your-application/caching#fetch-optionsnexttags-and-revalidatetag).","optional":false,"defaultValue":"","expandable":false,"children":[]}]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="listRuleValues"/>
+<TypeList types={[{"name":"ruleType","type":"`string`","description":"The type of rules to retrieve the values for. Can be `rules`, `buy-rules`, or `target-rules`.","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"ruleValue","type":"`string`","description":"The ID of the rule attribute to retrieve the values for.","optional":false,"defaultValue":"","expandable":false,"children":[]},{"name":"query","type":"[AdminGetPromotionsRuleValueParams](../../../../../types/HttpTypes/interfaces/types.HttpTypes.AdminGetPromotionsRuleValueParams/page.mdx)","description":"Configure the fields to retrieve in the rule values.","optional":true,"defaultValue":"","expandable":false,"children":[{"name":"fields","type":"`string`","description":"The fields and relations to retrieve separated by commas.\n\nLearn more in the [API reference](https://docs.medusajs.com/api/store#select-fields-and-relations).","optional":true,"defaultValue":"","expandable":false,"children":[]},{"name":"limit","type":"`number`","description":"The maximum number of items to retrieve.","optional":true,"defaultValue":"","expandable":false,"children":[]},{"name":"offset","type":"`number`","description":"The number of items to skip before retrieving the returned items.","optional":true,"defaultValue":"","expandable":false,"children":[]},{"name":"order","type":"`string`","description":"The field to sort by and in which order.","optional":true,"defaultValue":"","expandable":false,"children":[]},{"name":"q","type":"`string`","description":"Search for a rule value by its searchable","optional":true,"defaultValue":"","expandable":false,"children":[]},{"name":"value","type":"`string` \\| `string`[]","description":"Filter by rule value.","optional":true,"defaultValue":"","expandable":false,"children":[]},{"name":"application_method_target_type","type":"[ApplicationMethodTargetTypeValues](../../../../../promotion/types/promotion.ApplicationMethodTargetTypeValues/page.mdx)","description":"The application method's possible target types.","optional":true,"defaultValue":"","expandable":false,"children":[]}]},{"name":"headers","type":"[ClientHeaders](../../../types/js_sdk.admin.ClientHeaders/page.mdx)","description":"Headers to pass in the request.","optional":true,"defaultValue":"","expandable":false,"children":[{"name":"tags","type":"`string`[]","description":"Tags to cache data under for Next.js applications.\n\nLearn more in [Next.js's documentation](https://nextjs.org/docs/app/building-your-application/caching#fetch-optionsnexttags-and-revalidatetag).","optional":false,"defaultValue":"","expandable":false,"children":[]}]}]} expandUrl="https://docs.medusajs.com/learn/fundamentals/data-models/manage-relationships#retrieve-records-of-relation" sectionTitle="listRuleValues"/>
 
 ### Returns
 

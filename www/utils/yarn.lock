@@ -2646,6 +2646,7 @@ __metadata:
     commander: ^11.1.0
     dotenv: ^16.3.1
     eslint: 8.56.0
+    fdir: ^6.5.0
     glob: ^11.0.2
     minimatch: ^9.0.3
     openai: ^4.29.1
@@ -3276,6 +3277,18 @@ __metadata:
   dependencies:
     pend: ~1.2.0
   checksum: 304dd70270298e3ffe3bcc05e6f7ade2511acc278bc52d025f8918b48b6aa3b77f10361bddfadfe2a28163f7af7adbdce96f4d22c31b2f648ba2901f0c5fc20e
+  languageName: node
+  linkType: hard
+
+"fdir@npm:^6.5.0":
+  version: 6.5.0
+  resolution: "fdir@npm:6.5.0"
+  peerDependencies:
+    picomatch: ^3 || ^4
+  peerDependenciesMeta:
+    picomatch:
+      optional: true
+  checksum: e345083c4306b3aed6cb8ec551e26c36bab5c511e99ea4576a16750ddc8d3240e63826cc624f5ae17ad4dc82e68a253213b60d556c11bfad064b7607847ed07f
   languageName: node
   linkType: hard
 

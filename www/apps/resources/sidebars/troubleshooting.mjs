@@ -28,6 +28,11 @@ export const troubleshootingSidebar = [
         path: "/troubleshooting/general-errors",
         title: "General Errors",
       },
+      {
+        type: "link",
+        path: "/troubleshooting/pnpm",
+        title: "pnpm Errors",
+      },
     ],
   },
   {
@@ -98,6 +103,11 @@ export const troubleshootingSidebar = [
             title: "service.list Error",
           },
         ],
+      },
+      {
+        type: "link",
+        path: "/troubleshooting/scheduled-job-not-running",
+        title: "Scheduled Job Not Running",
       },
       {
         type: "link",

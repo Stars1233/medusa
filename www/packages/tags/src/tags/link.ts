@@ -232,6 +232,10 @@ export const link = [
     "path": "https://docs.medusajs.com/resources/references/medusa-workflows/linkProductsToSalesChannelWorkflow"
   },
   {
+    "title": "deleteShippingOptionTypesWorkflow",
+    "path": "https://docs.medusajs.com/resources/references/medusa-workflows/deleteShippingOptionTypesWorkflow"
+  },
+  {
     "title": "deleteShippingProfileWorkflow",
     "path": "https://docs.medusajs.com/resources/references/medusa-workflows/deleteShippingProfileWorkflow"
   },

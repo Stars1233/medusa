@@ -120,20 +120,12 @@ export const remoteQuery = [
     "path": "https://docs.medusajs.com/resources/references/medusa-workflows/deleteLineItemsWorkflow"
   },
   {
-    "title": "addOrderLineItemsWorkflow",
-    "path": "https://docs.medusajs.com/resources/references/medusa-workflows/addOrderLineItemsWorkflow"
-  },
-  {
     "title": "beginClaimOrderWorkflow",
     "path": "https://docs.medusajs.com/resources/references/medusa-workflows/beginClaimOrderWorkflow"
   },
   {
     "title": "beginExchangeOrderWorkflow",
     "path": "https://docs.medusajs.com/resources/references/medusa-workflows/beginExchangeOrderWorkflow"
-  },
-  {
-    "title": "beginOrderEditOrderWorkflow",
-    "path": "https://docs.medusajs.com/resources/references/medusa-workflows/beginOrderEditOrderWorkflow"
   },
   {
     "title": "beginReceiveReturnWorkflow",
@@ -334,10 +326,6 @@ export const remoteQuery = [
   {
     "title": "updateExchangeShippingMethodWorkflow",
     "path": "https://docs.medusajs.com/resources/references/medusa-workflows/updateExchangeShippingMethodWorkflow"
-  },
-  {
-    "title": "updateOrderEditShippingMethodWorkflow",
-    "path": "https://docs.medusajs.com/resources/references/medusa-workflows/updateOrderEditShippingMethodWorkflow"
   },
   {
     "title": "updateOrderTaxLinesWorkflow",

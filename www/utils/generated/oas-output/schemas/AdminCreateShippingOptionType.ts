@@ -5,7 +5,6 @@
  * x-schemaName: AdminCreateShippingOptionType
  * required:
  *   - label
- *   - description
  *   - code
  * properties:
  *   label:

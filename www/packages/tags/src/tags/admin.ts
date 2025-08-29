@@ -140,6 +140,10 @@ export const admin = [
     "path": "https://docs.medusajs.com/resources/references/js-sdk/admin/shippingOption"
   },
   {
+    "title": "shippingOptionType",
+    "path": "https://docs.medusajs.com/resources/references/js-sdk/admin/shippingOptionType"
+  },
+  {
     "title": "shippingProfile",
     "path": "https://docs.medusajs.com/resources/references/js-sdk/admin/shippingProfile"
   },

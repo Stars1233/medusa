@@ -7,5 +7,8 @@
   "exclude": [
     "../../../../packages/medusa/dist", 
     "../../../../packages/medusa/node_modules"
-  ]
+  ],
+  "compilerOptions": {
+    "rootDir": "../../../../packages/medusa/src"
+  }
 }
